@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="036b0699-b464-41b3-942f-e8ea3c14d612" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HELP.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dbml backups/V1__datamodel.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/RoleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/dto/exception/ExceptionResponseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/dto/exception/ValidationExceptionResponseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/dto/role/RequestRoleDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/dto/role/ResponseRoleDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/dto/user/RequestUserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/dto/user/ResponseUserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/entity/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/entity/users.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/enums/AccountStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/exception/DuplicateResourceException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/exception/ResourceNotFound.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/mapper/RoleMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/repository/RoleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/service/RoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-booking-system-prototype/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-booking-system-prototype/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-booking-system-prototype/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-booking-system-prototype/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-booking-system-prototype/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-booking-system-prototype/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-booking-system-prototype/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/AppointmentBookingSystemPrototypeApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/AppointmentBookingSystemPrototypeApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-booking-system-prototype/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/appointment-booking-system-prototype/src/test/java/com/swarupdhavan/appointment_booking_system_prototype/AppointmentBookingSystemPrototypeApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/swarupdhavan/appointment_booking_system_prototype/AppointmentBookingSystemPrototypeApplicationTests.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Exception" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000000000908447" />
+      <entry key="S2" value="1.0052329840827245" />
+      <entry key="S5" value="1.205642529071749" />
+      <entry key="S10" value="1.7534430496598294" />
+      <entry key="S30" value="2.9910750673918947" />
+      <entry key="S60" value="3.9808872557232573" />
+      <entry key="M2" value="6.114298317983328" />
+      <entry key="M5" value="12.326595516734077" />
+      <entry key="M10" value="19.85318333813496" />
+      <entry key="M15" value="28.04193899331036" />
+      <entry key="M30" value="60.10334849283913" />
+      <entry key="H1" value="131.08091205983033" />
+      <entry key="H2" value="242.59712339068156" />
+      <entry key="H4" value="359.7178452209148" />
+      <entry key="D1" value="525.4132439184293" />
+      <entry key="W1" value="563.3406512593563" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="2.29318046E-315" />
+      <entry key="MS500" value="1.182416490038851E-63" />
+      <entry key="S2" value="2.4203420878700866E-16" />
+      <entry key="S5" value="9.860785581194735E-7" />
+      <entry key="S10" value="0.0016885828433123998" />
+      <entry key="S30" value="0.2478599969578032" />
+      <entry key="S60" value="0.9352220482592073" />
+      <entry key="M2" value="2.3338738473910365" />
+      <entry key="M5" value="5.451948849155221" />
+      <entry key="M10" value="9.100793717656423" />
+      <entry key="M15" value="14.150711571496531" />
+      <entry key="M30" value="36.04497345236463" />
+      <entry key="H1" value="78.17359425967012" />
+      <entry key="H2" value="132.85094633784433" />
+      <entry key="H4" value="183.80965901438313" />
+      <entry key="D1" value="250.66297291625798" />
+      <entry key="W1" value="265.42435214235184" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.005336094752946856" />
+      <entry key="MS500" value="0.3511112189858925" />
+      <entry key="S2" value="0.7742580043181098" />
+      <entry key="S5" value="1.0934706057638717" />
+      <entry key="S10" value="1.6793201694753863" />
+      <entry key="S30" value="3.1855494264159865" />
+      <entry key="S60" value="4.861782742133277" />
+      <entry key="M2" value="8.388764158229954" />
+      <entry key="M5" value="17.720710765356" />
+      <entry key="M10" value="28.901502893790838" />
+      <entry key="M15" value="42.136834636085425" />
+      <entry key="M30" value="96.0773907134451" />
+      <entry key="H1" value="209.17525485773768" />
+      <entry key="H2" value="375.37739951189616" />
+      <entry key="H4" value="543.4768750947103" />
+      <entry key="D1" value="776.0643193154356" />
+      <entry key="W1" value="828.7631929100103" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3LDnlebqJgELty59iCWw2ArwD7m" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="AppointmentBookingSystemPrototypeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <envs>
+        <env name="DB_URL" value="jdbc:mysql://localhost:3306/appointment-booking-system-prototyp_db" />
+        <env name="DB_USERNAME" value="root" />
+        <env name="DB_PASSWORD" value="mysqlpass" />
+      </envs>
+      <module name="appointment-booking-system-prototype" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.swarupdhavan.appointment_booking_system_prototype.AppointmentBookingSystemPrototypeApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-34e2839f716b-intellij.indexing.shared.core-IU-262.9437.185" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.9437.185" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="036b0699-b464-41b3-942f-e8ea3c14d612" name="Changes" comment="" />
+      <created>1792997661700</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1792997661700</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="application.properties" />
+  </component>
+</project>

@@ -1,0 +1,81 @@
+Table users {
+  id bigint [pk, increment]
+  role_id bigint [not null]
+  full_name varchar(200) [not null]
+  email varchar(255) [not null, unique]
+  password_hash varchar(255) [not null]
+  phone varchar(20)
+  account_status account_status [not null, default: 'ACTIVE']
+  created_at datetime [not null]
+  updated_at datetime [not null]
+}
+
+Table roles {
+  id bigint [pk, increment]
+  name varchar(20)
+}
+
+Table patients {
+  id bigint [pk, increment]
+  user_id bigint [not null, unique]
+  date_of_birth date 
+  gender varchar(20)
+  address varchar(255)
+  created_at datetime [not null]
+  updated_at datetime [not null]
+}
+
+Table docters {
+  id bigint [pk, increment]
+  user_id bigint [not null, unique]
+  specialization varchar(100)
+  qulification varchar(150)
+  expiriance_year int [not null, default:0 ] 
+  consutancy_fees decimal(10,2) [not null]
+  created_at datetime [not null]
+  updated_at datetime [not null]
+}
+
+Table docter_scedule{
+  id bigint [pk, increment]
+  docter_id bigint [not null]
+  available_date date [not null]
+  start_time time [not null]
+  end_time time [not null]
+  slot_duration_minutes int [not null, default: 30]
+  is_available bool [not null, default: true]
+  created_at datetime [not null]
+  updated_at datetime [not null]
+}
+
+Table appointments{
+  id bigint [pk, unique]
+  patient_id bigint [not null]
+  docter_id bigint [not null]
+  schedule_id bigint [not null]
+  appointment_date date [not null]
+  start_time time [not null]
+  end_time time [not null]
+  status appointment_status [not null, default: 'pending']
+  reason varchar(500)
+  cunsoltation_fees decimal(20,2) [not null]
+  cancelation_reason varchar(500) 
+  created_at datetime [not null]
+  updated_at datetime [not null]
+}
+
+//relationships 
+
+Ref: users.role_id > roles.id
+
+Ref: patients.user_id - users.id
+Ref: docters.user_id - users.id
+
+Ref:docter_scedule.docter_id > docters.id
+
+Ref: appointments.patient_id > patients.id
+Ref: appointments.docter_id > docters.id
+Ref: appointments.schedule_id > docter_scedule.id
+
+
+Ref: "docters"."user_id" -? "docters"."id"
