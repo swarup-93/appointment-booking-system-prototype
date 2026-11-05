@@ -24,7 +24,10 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+// TODO : Move this inside the auth service
     public ResponseUserDto registerUser(RequestUserDto requestDto) {
+
+        //TODO: Create mapper for dtos
         User user = new User();
         user.setUsername(requestDto.getUsername());
 
