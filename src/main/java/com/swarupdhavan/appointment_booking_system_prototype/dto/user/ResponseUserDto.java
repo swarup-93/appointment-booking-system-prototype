@@ -1,6 +1,7 @@
 package com.swarupdhavan.appointment_booking_system_prototype.dto.user;
 
 import com.swarupdhavan.appointment_booking_system_prototype.enums.AccountStatus;
+import jakarta.persistence.Column;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,4 +21,6 @@ public class ResponseUserDto {
     private String phoneNumber;
     private String role;
     private AccountStatus accountStatus;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }

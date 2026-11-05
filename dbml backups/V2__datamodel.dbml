@@ -1,0 +1,142 @@
+Enum account_status {
+  ACTIVE
+  INACTIVE
+  LOCKED
+}
+
+Enum gender {
+  MALE
+  FEMALE
+  OTHER
+  PREFER_NOT_TO_SAY
+}
+
+Enum application_status {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+Enum appointment_status {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+  REJECTED
+}
+
+Table users {
+  id binary(16) [pk]
+  username varchar(50) [not null, unique]
+  full_name varchar(200) [not null]
+  email varchar(255) [not null, unique]
+  password_hash varchar(255) [not null]
+  phone_number varchar(20) [not null]
+  account_status account_status [not null, default: 'ACTIVE']
+  created_at datetime(6) [not null]
+  updated_at datetime(6) [not null]
+}
+
+Table roles {
+  id binary(16) [pk]
+  name varchar(20) [not null, unique]
+}
+
+Table user_roles {
+  user_id binary(16) [not null]
+  role_id binary(16) [not null]
+
+  indexes {
+    (user_id, role_id) [pk]
+  }
+}
+
+Table patients {
+  id binary(16) [pk]
+  user_id binary(16) [not null, unique]
+  date_of_birth date [not null]
+  gender gender [not null]
+  address varchar(255)
+  created_at datetime(6) [not null]
+  updated_at datetime(6) [not null]
+}
+
+Table doctors {
+  id binary(16) [pk]
+  user_id binary(16) [not null, unique]
+  specialization varchar(100) [not null]
+  qualification varchar(150) [not null]
+  license_number varchar(100) [not null, unique]
+  experience_years int [not null, default: 0]
+  consultancy_fees decimal(10,2) [not null]
+  created_at datetime(6) [not null]
+  updated_at datetime(6) [not null]
+}
+
+Table doctor_applications {
+  id binary(16) [pk]
+  user_id binary(16) [not null]
+  medical_registration_number varchar(100) [not null]
+  specialization varchar(100) [not null]
+  qualification varchar(150) [not null]
+  experience_years int [not null, default: 0]
+  application_status application_status [not null, default: 'PENDING']
+  rejection_reason varchar(500)
+  reviewed_by binary(16)
+  reviewed_at datetime(6)
+  created_at datetime(6) [not null]
+  updated_at datetime(6) [not null]
+}
+
+Table doctor_schedules {
+  id binary(16) [pk]
+  doctor_id binary(16) [not null]
+  available_date date [not null]
+  start_time time [not null]
+  end_time time [not null]
+  slot_duration_minutes int [not null, default: 30]
+  is_available boolean [not null, default: true]
+  created_at datetime(6) [not null]
+  updated_at datetime(6) [not null]
+}
+
+Table appointments {
+  id binary(16) [pk]
+  patient_id binary(16) [not null]
+  doctor_id binary(16) [not null]
+  schedule_id binary(16) [not null]
+  appointment_date date [not null]
+  start_time time [not null]
+  end_time time [not null]
+  status appointment_status [not null, default: 'PENDING']
+  reason varchar(500)
+  consultation_fees decimal(10,2) [not null]
+  cancellation_reason varchar(500)
+  created_at datetime(6) [not null]
+  updated_at datetime(6) [not null]
+}
+
+// USER AND ROLE RELATIONSHIPS
+
+Ref: user_roles.user_id > users.id
+Ref: user_roles.role_id > roles.id
+
+// USER PROFILES
+
+Ref: patients.user_id - users.id
+Ref: doctors.user_id - users.id
+
+// DOCTOR APPLICATIONS
+
+Ref: doctor_applications.user_id > users.id
+Ref: doctor_applications.reviewed_by > users.id
+
+// DOCTOR SCHEDULES
+
+Ref: doctor_schedules.doctor_id > doctors.id
+
+// APPOINTMENTS
+
+Ref: appointments.patient_id > patients.id
+Ref: appointments.doctor_id > doctors.id
+Ref: appointments.schedule_id > doctor_schedules.id

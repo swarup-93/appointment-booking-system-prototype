@@ -3,7 +3,7 @@ package com.swarupdhavan.appointment_booking_system_prototype.service;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.role.RequestRoleDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.role.ResponseRoleDto;
 import com.swarupdhavan.appointment_booking_system_prototype.entity.Role;
-import com.swarupdhavan.appointment_booking_system_prototype.exception.ResourceNotFound;
+import com.swarupdhavan.appointment_booking_system_prototype.exception.ResourceNotFoundException;
 import com.swarupdhavan.appointment_booking_system_prototype.mapper.RoleMapper;
 import com.swarupdhavan.appointment_booking_system_prototype.repository.RoleRepository;
 import org.springframework.stereotype.Service;
@@ -27,7 +27,7 @@ public class RoleService {
     public ResponseRoleDto getRoleById(UUID id) {
         Role response = roleRepository
                 .findById(id)
-                .orElseThrow(() -> new ResourceNotFound("Role with id "+id+" not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Role with id "+id+" not found"));
 
         String message = "Role retrieved successfully";
 
@@ -55,7 +55,7 @@ public class RoleService {
     public void deleteRole(UUID id) {
         roleRepository
                 .findById(id)
-                .orElseThrow(() -> new ResourceNotFound("Role with id "+id+" not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Role with id "+id+" not found"));
 
         roleRepository.deleteById(id);
     }

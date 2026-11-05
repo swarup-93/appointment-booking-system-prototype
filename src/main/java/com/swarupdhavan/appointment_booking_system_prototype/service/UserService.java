@@ -5,7 +5,7 @@ import com.swarupdhavan.appointment_booking_system_prototype.dto.user.ResponseUs
 import com.swarupdhavan.appointment_booking_system_prototype.entity.Role;
 import com.swarupdhavan.appointment_booking_system_prototype.entity.User;
 import com.swarupdhavan.appointment_booking_system_prototype.enums.AccountStatus;
-import com.swarupdhavan.appointment_booking_system_prototype.exception.ResourceNotFound;
+import com.swarupdhavan.appointment_booking_system_prototype.exception.ResourceNotFoundException;
 import com.swarupdhavan.appointment_booking_system_prototype.repository.RoleRepository;
 import com.swarupdhavan.appointment_booking_system_prototype.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -40,7 +40,7 @@ public class UserService {
 
         user.setAccountStatus(AccountStatus.ACTIVE);
 
-        Role role = roleRepository.findByName("ROLE_USER").orElseThrow(()-> new ResourceNotFound("Role with name:ROLE_USER not found"));
+        Role role = roleRepository.findByName("ROLE_USER").orElseThrow(()-> new ResourceNotFoundException("Role with name:ROLE_USER not found"));
 
         user.getRoles().add(role);
         userRepository.save(user);
@@ -52,6 +52,8 @@ public class UserService {
         responseUser.setPhoneNumber(requestDto.getPhoneNumber());
         responseUser.setRole(role.getName());
         responseUser.setAccountStatus(AccountStatus.ACTIVE);
+        responseUser.setCreatedAt(user.getCreatedAt());
+        responseUser.setUpdatedAt(user.getUpdatedAt());
 
         return responseUser;
     }

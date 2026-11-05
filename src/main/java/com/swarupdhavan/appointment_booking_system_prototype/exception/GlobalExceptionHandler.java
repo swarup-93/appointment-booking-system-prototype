@@ -56,9 +56,9 @@ public class GlobalExceptionHandler {
     }
 
 //  custom exception (if resource not found)
-    @ExceptionHandler(ResourceNotFound.class)
+    @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ExceptionResponseDto> handleResourceNotFound(
-            ResourceNotFound ex,
+            ResourceNotFoundException ex,
             HttpServletRequest request
     ){
         ExceptionResponseDto exceptionResponse = new ExceptionResponseDto(
