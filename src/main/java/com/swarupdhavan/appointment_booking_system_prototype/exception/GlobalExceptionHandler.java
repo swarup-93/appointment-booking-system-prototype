@@ -9,10 +9,12 @@ import org.springframework.validation.method.MethodValidationException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -89,6 +91,31 @@ public class GlobalExceptionHandler {
                 .body(exceptionResponse);
     }
 
+//  for Invalid path variable or request parameter type
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<ExceptionResponseDto> handleMethodArgumentTypeMismatchException(
+            MethodArgumentTypeMismatchException ex,
+            HttpServletRequest request
+    ){
+        String message;
+        if(ex.getRequiredType()== UUID.class){
+            message = "Invalid UUID format, Please provide a valid UUID";
+        } else {
+            message = "Invalid value for parameter: " + ex.getName();
+        }
+
+        ExceptionResponseDto exceptionResponse = new ExceptionResponseDto(
+                LocalDateTime.now(),
+                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.BAD_REQUEST.getReasonPhrase(),
+                message,
+                request.getRequestURI()
+        );
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(exceptionResponse);
+    }
+
 //   for invalid method like GET POST
     @ExceptionHandler(MethodValidationException.class)
     public ResponseEntity<ExceptionResponseDto> handleMethodValidationException(
@@ -97,13 +124,13 @@ public class GlobalExceptionHandler {
     ){
         ExceptionResponseDto exceptionResponse = new ExceptionResponseDto(
                 LocalDateTime.now(),
-                HttpStatus.METHOD_NOT_ALLOWED.value(),
-                HttpStatus.METHOD_NOT_ALLOWED.getReasonPhrase(),
+                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.BAD_REQUEST.getReasonPhrase(),
                 ex.getMessage(),
                 request.getRequestURI()
         );
 
-        return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED)
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(exceptionResponse);
     }
 
@@ -122,7 +149,7 @@ public class GlobalExceptionHandler {
                 LocalDateTime.now(),
                 HttpStatus.BAD_REQUEST.value(),
                 HttpStatus.BAD_REQUEST.getReasonPhrase(),
-                ex.getMessage(),
+                "Validation Failed",
                 request.getRequestURI(),
                 FieldErrors
         );

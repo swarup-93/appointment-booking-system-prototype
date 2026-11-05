@@ -6,13 +6,10 @@ import com.swarupdhavan.appointment_booking_system_prototype.entity.Role;
 import com.swarupdhavan.appointment_booking_system_prototype.exception.ResourceNotFound;
 import com.swarupdhavan.appointment_booking_system_prototype.mapper.RoleMapper;
 import com.swarupdhavan.appointment_booking_system_prototype.repository.RoleRepository;
-import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
-
-import static java.util.stream.Collectors.toList;
 
 @Service
 public class RoleService {
@@ -46,7 +43,7 @@ public class RoleService {
     }
 
     // add new role
-    public ResponseRoleDto addRole(@Valid RequestRoleDto request) {
+    public ResponseRoleDto addRole(RequestRoleDto request) {
         Role role = mapper.mapToEntity(request);
         Role RoleResponse = roleRepository.save(role);
         String message = "Role added successfully";

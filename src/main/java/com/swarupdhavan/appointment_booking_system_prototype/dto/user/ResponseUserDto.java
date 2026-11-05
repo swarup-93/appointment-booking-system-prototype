@@ -14,10 +14,10 @@ import java.util.UUID;
 
 public class ResponseUserDto {
     private UUID id;
+    private String username;
     private String fullName;
     private String email;
+    private String phoneNumber;
     private String role;
     private AccountStatus accountStatus;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 }
