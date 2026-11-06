@@ -22,10 +22,8 @@ public class AuthController {
         this.authenticationManager = authenticationManager;
         this.jwtService = jwtService;
     }
-    
+
     //TODO: move register controller here
-
-
     //for login
     @PostMapping("/login")
     public LoginResponseDto login(@RequestBody LoginRequestDto loginRequestDto) {

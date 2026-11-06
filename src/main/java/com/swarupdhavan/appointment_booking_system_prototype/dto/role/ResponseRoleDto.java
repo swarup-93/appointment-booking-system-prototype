@@ -15,9 +15,4 @@ import java.util.UUID;
 public class ResponseRoleDto {
     private UUID id;
     private String name;
-    private LocalDate dateOfBirth;
-    private Gender gender;
-    private String address;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 }

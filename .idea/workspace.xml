@@ -5,26 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="036b0699-b464-41b3-942f-e8ea3c14d612" name="Changes" comment="create registration and login flow">
-      <change afterPath="$PROJECT_DIR$/dbml backups/V2__datamodel.dbml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/PatientController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/dto/patient/RequestPatientDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/dto/patient/ResponsePatientDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/entity/Patient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/enums/Gender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/mapper/PatientMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/repository/PatientRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/service/PatientService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migrations/V3__added_patients_tables.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/dto/patient/UpdatePatientDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dbml backups/V1__datamodel.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dbml backups/V1__datamodel.dbml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/PatientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/dto/login/LoginRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/dto/login/LoginRequestDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/dto/role/ResponseRoleDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/dto/role/ResponseRoleDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/dto/user/ResponseUserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/dto/user/ResponseUserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/exception/ResourceNotFound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/exception/ResourceNotFoundException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/service/RoleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/repository/PatientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/repository/PatientRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/service/PatientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/service/PatientService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +37,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/AuthController.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -62,61 +53,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000015024875" />
-      <entry key="MS500" value="1.0171934157714975" />
-      <entry key="S2" value="1.362752350488499" />
-      <entry key="S5" value="1.7310691292963143" />
-      <entry key="S10" value="2.157528287661166" />
-      <entry key="S30" value="3.0357331542669646" />
-      <entry key="S60" value="3.549329198354141" />
-      <entry key="M2" value="4.615191808123802" />
-      <entry key="M5" value="11.089120954525415" />
-      <entry key="M10" value="24.590558218208862" />
-      <entry key="M15" value="36.5877352241319" />
-      <entry key="M30" value="62.210921894321935" />
-      <entry key="H1" value="91.81365847547785" />
-      <entry key="H2" value="136.96480996204681" />
-      <entry key="H4" value="212.59731179933357" />
-      <entry key="D1" value="688.1232978984083" />
-      <entry key="W1" value="1081.397637705404" />
+      <entry key="MS100" value="1.0000001832097984" />
+      <entry key="MS500" value="1.0449355166514673" />
+      <entry key="S2" value="1.4604128486025199" />
+      <entry key="S5" value="1.7332616537125407" />
+      <entry key="S10" value="1.8563069856730943" />
+      <entry key="S30" value="1.9496054552800712" />
+      <entry key="S60" value="1.9747673568205193" />
+      <entry key="M2" value="2.0046133405269257" />
+      <entry key="M5" value="2.408357150909886" />
+      <entry key="M10" value="5.0805535779337525" />
+      <entry key="M15" value="10.453009684549619" />
+      <entry key="M30" value="35.86005769891355" />
+      <entry key="H1" value="88.43238492883324" />
+      <entry key="H2" value="164.43595933538663" />
+      <entry key="H4" value="266.56088944060303" />
+      <entry key="D1" value="783.9637250964605" />
+      <entry key="W1" value="1207.0286148350856" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.1186037224514131E-32" />
-      <entry key="MS500" value="4.071320125716196E-7" />
-      <entry key="S2" value="0.02532847283372212" />
-      <entry key="S5" value="0.25795787848830987" />
-      <entry key="S10" value="0.7393336164188418" />
-      <entry key="S30" value="2.2448905598938795" />
-      <entry key="S60" value="3.322224766810334" />
-      <entry key="M2" value="4.714381129889249" />
-      <entry key="M5" value="9.021316863278823" />
-      <entry key="M10" value="15.417851496880257" />
-      <entry key="M15" value="20.40704662608908" />
-      <entry key="M30" value="30.373045123520164" />
-      <entry key="H1" value="41.5805364724192" />
-      <entry key="H2" value="58.71917509989402" />
-      <entry key="H4" value="88.53228051000761" />
-      <entry key="D1" value="298.61498252041605" />
-      <entry key="W1" value="475.151138924795" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="7.86347787683108E-248" />
+      <entry key="S5" value="1.4396148923308197E-99" />
+      <entry key="S10" value="3.8027145977177253E-50" />
+      <entry key="S30" value="5.3776066236755095E-17" />
+      <entry key="S60" value="2.2723304807467752E-8" />
+      <entry key="M2" value="5.975792350244072E-4" />
+      <entry key="M5" value="0.30453765859983695" />
+      <entry key="M10" value="2.9054577789618787" />
+      <entry key="M15" value="6.9599834241585565" />
+      <entry key="M30" value="21.026512292738953" />
+      <entry key="H1" value="45.149284095582516" />
+      <entry key="H2" value="77.07421232567674" />
+      <entry key="H4" value="118.58489951131095" />
+      <entry key="D1" value="345.2232071133436" />
+      <entry key="W1" value="534.5023137631504" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="6.725495092020322E-5" />
-      <entry key="MS500" value="0.14640582266714214" />
-      <entry key="S2" value="0.6822553725554522" />
-      <entry key="S5" value="1.3748321284322207" />
-      <entry key="S10" value="2.35796899130104" />
-      <entry key="S30" value="4.8655439253473505" />
-      <entry key="S60" value="6.582600080609178" />
-      <entry key="M2" value="9.132685107396412" />
-      <entry key="M5" value="19.960293991084065" />
-      <entry key="M10" value="39.87830379148583" />
-      <entry key="M15" value="56.879384700783845" />
-      <entry key="M30" value="92.49853735379557" />
-      <entry key="H1" value="133.33700776670594" />
-      <entry key="H2" value="195.6453409533779" />
-      <entry key="H4" value="301.1016780382698" />
-      <entry key="D1" value="986.7234071256279" />
-      <entry key="W1" value="1556.545421811461" />
+      <entry key="MS100" value="0.006258367465125768" />
+      <entry key="MS500" value="0.387107142158755" />
+      <entry key="S2" value="1.1720482597373403" />
+      <entry key="S5" value="1.5939479533400571" />
+      <entry key="S10" value="1.781457983188871" />
+      <entry key="S30" value="1.9233602668393006" />
+      <entry key="S60" value="1.9614680982730828" />
+      <entry key="M2" value="1.9983574467549114" />
+      <entry key="M5" value="2.7062664312132143" />
+      <entry key="M10" value="7.966714231261559" />
+      <entry key="M15" value="17.381133974950043" />
+      <entry key="M30" value="56.83195457466816" />
+      <entry key="H1" value="133.51874839201537" />
+      <entry key="H2" value="241.4560214944118" />
+      <entry key="H4" value="385.10517080415644" />
+      <entry key="D1" value="1129.168871266973" />
+      <entry key="W1" value="1741.5270224598155" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{

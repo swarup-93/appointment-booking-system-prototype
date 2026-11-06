@@ -2,6 +2,7 @@ package com.swarupdhavan.appointment_booking_system_prototype.service;
 
 import com.swarupdhavan.appointment_booking_system_prototype.dto.patient.RequestPatientDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.patient.ResponsePatientDto;
+import com.swarupdhavan.appointment_booking_system_prototype.dto.patient.UpdatePatientDto;
 import com.swarupdhavan.appointment_booking_system_prototype.entity.Patient;
 import com.swarupdhavan.appointment_booking_system_prototype.entity.User;
 import com.swarupdhavan.appointment_booking_system_prototype.exception.ResourceNotFoundException;
@@ -25,12 +26,13 @@ private final UserRepository userRepository;
         this.userRepository = userRepository;
     }
 
-    public ResponsePatientDto createPatient(RequestPatientDto requestPatientDto) {
+    //to create the new patient
+    public ResponsePatientDto createPatientProfile(RequestPatientDto requestPatientDto) {
         UUID userId = UUID.fromString(SecurityContextHolder.getContext().getAuthentication().getName());
 
         User user = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User Not Found"));
 
-        if (patientRepository.existsByUser_Id(userId)) {
+        if (patientRepository.findByUser_Id(userId).isPresent()) {
             throw new IllegalStateException(
                     "Patient profile already exists"
             );
@@ -40,5 +42,35 @@ private final UserRepository userRepository;
         patientRepository.save(patient);
 
         return patientMapper.mapToDto(patient);
+    }
+
+    //to get the
+    public ResponsePatientDto getPatientProfile(UUID patientId){
+        Patient patient = patientRepository.findById(patientId)
+                .orElseThrow(()->
+                        new ResourceNotFoundException("Patient with the id "+ patientId +" not present")
+                );
+        return patientMapper.mapToDto(patient);
+    }
+
+    public ResponsePatientDto updatePatientProfile(UUID patientId, UpdatePatientDto updateRequest) {
+        Patient patientRecord = patientRepository.findById(patientId)
+                .orElseThrow(()-> new ResourceNotFoundException("Patient with the id "+ patientId +" not present"));
+
+        if (updateRequest.getDateOfBirth() != null) {
+            patientRecord.setDateOfBirth(updateRequest.getDateOfBirth());
+        }
+
+        if (updateRequest.getGender() != null) {
+            patientRecord.setGender(updateRequest.getGender());
+        }
+
+        if (updateRequest.getAddress() != null) {
+            patientRecord.setAddress(updateRequest.getAddress());
+        }
+
+        patientRepository.save(patientRecord);
+
+        return patientMapper.mapToDto(patientRecord);
     }
 }
