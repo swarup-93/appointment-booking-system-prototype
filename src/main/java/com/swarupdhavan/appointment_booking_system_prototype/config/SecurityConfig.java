@@ -53,7 +53,7 @@ public class SecurityConfig {
                 //.httpBasic(Customizer.withDefaults())
 
                 .authorizeHttpRequests(auth ->
-                    auth.requestMatchers("/api/user/register","/auth/login").permitAll().anyRequest().authenticated()
+                    auth.requestMatchers("/auth/register","/auth/login").permitAll().anyRequest().authenticated()
                 )
 
                 .sessionManagement(session ->

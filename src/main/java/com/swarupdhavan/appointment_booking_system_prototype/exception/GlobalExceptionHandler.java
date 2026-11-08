@@ -19,42 +19,6 @@ import java.util.UUID;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-//  for any kind of generic exception
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ExceptionResponseDto> handleException(
-            Exception ex,
-            HttpServletRequest request
-    ){
-        ExceptionResponseDto exceptionResponse = new ExceptionResponseDto(
-                LocalDateTime.now(),
-                HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(),
-                "something went wrong",
-                request.getRequestURI()
-        );
-
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(exceptionResponse);
-    }
-
-//  runtime exception handler
-    @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<ExceptionResponseDto> handleRuntimeException(
-            RuntimeException ex,
-            HttpServletRequest request
-    ){
-        ExceptionResponseDto exceptionResponse = new ExceptionResponseDto(
-                LocalDateTime.now(),
-                HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(),
-                ex.getMessage(),
-                request.getRequestURI()
-        );
-
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(exceptionResponse);
-    }
-
 //  custom exception (if resource not found)
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ExceptionResponseDto> handleResourceNotFound(
