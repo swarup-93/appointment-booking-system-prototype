@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="036b0699-b464-41b3-942f-e8ea3c14d612" name="Changes" comment="create registration and login flow">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/mapper/RegisterMapper.java" afterDir="false" />
+    <list default="true" id="036b0699-b464-41b3-942f-e8ea3c14d612" name="Changes" comment="Update todos &#10;1- move registration enpoint in auth controller&#10;&#10;2- create mapper for the registration">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/dto/user/ResponseUserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/dto/user/ResponseUserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/mapper/RegisterMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/mapper/RegisterMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,62 +49,65 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="4.793851981756383E-67" />
-      <entry key="S2" value="2.779744145863561E-17" />
-      <entry key="S5" value="3.43912288677328E-7" />
-      <entry key="S10" value="9.552974426807705E-4" />
-      <entry key="S30" value="0.2459166549150654" />
-      <entry key="S60" value="1.3468641837462199" />
-      <entry key="M2" value="4.182128731470886" />
-      <entry key="M5" value="14.777962153964634" />
-      <entry key="M10" value="33.401558643723526" />
-      <entry key="M15" value="48.388065091449015" />
-      <entry key="M30" value="82.68641712421439" />
-      <entry key="H1" value="139.57696101304228" />
-      <entry key="H2" value="224.93440956656025" />
-      <entry key="H4" value="339.19151643673086" />
-      <entry key="D1" value="879.9403374102137" />
-      <entry key="W1" value="1318.6778336535208" />
+      <entry key="MS100" value="1.0005545972328864" />
+      <entry key="MS500" value="1.336778448073555" />
+      <entry key="S2" value="2.268673049919906" />
+      <entry key="S5" value="2.6657500914447088" />
+      <entry key="S10" value="2.8249956421351143" />
+      <entry key="S30" value="2.939818233374113" />
+      <entry key="S60" value="2.9708480594993767" />
+      <entry key="M2" value="3.2176001689240725" />
+      <entry key="M5" value="9.606344313358834" />
+      <entry key="M10" value="28.23437050609975" />
+      <entry key="M15" value="46.34348557024798" />
+      <entry key="M30" value="89.19728311994508" />
+      <entry key="H1" value="154.01519830510543" />
+      <entry key="H2" value="246.68932251894876" />
+      <entry key="H4" value="367.6533372519867" />
+      <entry key="D1" value="919.2728781159312" />
+      <entry key="W1" value="1364.0535382160863" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000000000000004" />
-      <entry key="S5" value="1.0000012334788209" />
-      <entry key="S10" value="1.0018788110282277" />
-      <entry key="S30" value="1.2853288454178493" />
-      <entry key="S60" value="2.213119114033317" />
-      <entry key="M2" value="4.203904771784227" />
-      <entry key="M5" value="10.13184359518838" />
-      <entry key="M10" value="18.07785460606863" />
-      <entry key="M15" value="23.86856492493832" />
-      <entry key="M30" value="37.877639400656975" />
-      <entry key="H1" value="62.435474478772676" />
-      <entry key="H2" value="98.44182936621257" />
-      <entry key="H4" value="145.3703024980615" />
-      <entry key="D1" value="381.5881614223513" />
-      <entry key="W1" value="577.602385627504" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="5.571782693807047E-158" />
+      <entry key="S5" value="1.2542907044463698E-63" />
+      <entry key="S10" value="3.548248482651623E-32" />
+      <entry key="S30" value="4.220985550419886E-11" />
+      <entry key="S60" value="1.2682491932590322E-5" />
+      <entry key="M2" value="0.010063586237320633" />
+      <entry key="M5" value="0.9064178263334582" />
+      <entry key="M10" value="5.407130729661727" />
+      <entry key="M15" value="10.675124824794391" />
+      <entry key="M30" value="25.331227308844642" />
+      <entry key="H1" value="51.05850329114375" />
+      <entry key="H2" value="89.02213535685763" />
+      <entry key="H4" value="138.24036124200714" />
+      <entry key="D1" value="378.4031590992521" />
+      <entry key="W1" value="576.9111842205338" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.392533832847196E-4" />
-      <entry key="MS500" value="0.16934062218567097" />
-      <entry key="S2" value="0.6414905865555273" />
-      <entry key="S5" value="0.837291666142473" />
-      <entry key="S10" value="0.9175549606986415" />
-      <entry key="S30" value="1.4814595890031776" />
-      <entry key="S60" value="3.4958894556244724" />
-      <entry key="M2" value="8.302816192336179" />
-      <entry key="M5" value="24.79513386344296" />
-      <entry key="M10" value="51.35790304672719" />
-      <entry key="M15" value="72.14308438706648" />
-      <entry key="M30" value="120.46766712163799" />
-      <entry key="H1" value="201.92863507565548" />
-      <entry key="H2" value="323.3086490275378" />
-      <entry key="H4" value="484.5123633412737" />
-      <entry key="D1" value="1261.5083646285516" />
-      <entry key="W1" value="1896.275965737065" />
+      <entry key="MS100" value="0.0011236072459981385" />
+      <entry key="MS500" value="0.43780194631503855" />
+      <entry key="S2" value="1.7992398456010255" />
+      <entry key="S5" value="2.439099011614161" />
+      <entry key="S10" value="2.7039313525765256" />
+      <entry key="S30" value="2.897607201893189" />
+      <entry key="S60" value="2.9495132788966085" />
+      <entry key="M2" value="3.216690110079745" />
+      <entry key="M5" value="10.497829454271425" />
+      <entry key="M10" value="33.602480980631235" />
+      <entry key="M15" value="56.965898298021365" />
+      <entry key="M30" value="114.46298122316882" />
+      <entry key="H1" value="205.00460433551174" />
+      <entry key="H2" value="335.65004258147985" />
+      <entry key="H4" value="505.8465195484158" />
+      <entry key="D1" value="1297.656045868967" />
+      <entry key="W1" value="1940.9604703741475" />
     </decayedShown>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2,
@@ -195,7 +195,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Role crud&#10;create exceptions" />
     <MESSAGE value="create registration and login flow" />
-    <option name="LAST_COMMIT_MESSAGE" value="create registration and login flow" />
+    <MESSAGE value="Update todos &#10;1- move registration enpoint in auth controller&#10;&#10;2- create mapper for the registration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update todos &#10;1- move registration enpoint in auth controller&#10;&#10;2- create mapper for the registration" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

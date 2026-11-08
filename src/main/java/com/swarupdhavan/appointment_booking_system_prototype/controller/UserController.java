@@ -22,10 +22,4 @@ public class UserController {
     public String hello(){
         return "hello";
     }
-
-    @PostMapping("/register")
-    public ResponseEntity<ResponseUserDto> registerUser(@RequestBody RequestUserDto requestDto){
-        ResponseUserDto responseDto = userService.registerUser(requestDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
-    }
 }

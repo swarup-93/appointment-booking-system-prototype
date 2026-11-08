@@ -13,6 +13,7 @@ public class RegisterMapper {
 
     public User mapToEntity(RequestUserDto request, String encodedPassword, Role role) {
         User user = new User();
+        user.setUsername(request.getUsername());
         user.setFullName(request.getFullName());
         user.setEmail(request.getEmail());
         user.setPhoneNumber(request.getPhoneNumber());

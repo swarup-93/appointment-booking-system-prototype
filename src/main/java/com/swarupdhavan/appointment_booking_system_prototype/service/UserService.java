@@ -24,37 +24,4 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-// TODO : Move this inside the auth service
-    public ResponseUserDto registerUser(RequestUserDto requestDto) {
-
-        //TODO: Create mapper for dtos
-        User user = new User();
-        user.setUsername(requestDto.getUsername());
-
-        user.setFullName(requestDto.getFullName());
-        user.setEmail(requestDto.getEmail());
-        user.setPhoneNumber(requestDto.getPhoneNumber());
-
-        String encodedPassword = passwordEncoder.encode(requestDto.getPassword());
-        user.setPasswordHash(encodedPassword);
-
-        user.setAccountStatus(AccountStatus.ACTIVE);
-
-        Role role = roleRepository.findByName("ROLE_USER").orElseThrow(()-> new ResourceNotFoundException("Role with name:ROLE_USER not found"));
-
-        user.getRoles().add(role);
-        userRepository.save(user);
-
-        ResponseUserDto responseUser = new ResponseUserDto();
-        responseUser.setUsername(requestDto.getUsername());
-        responseUser.setFullName(requestDto.getFullName());
-        responseUser.setEmail(requestDto.getEmail());
-        responseUser.setPhoneNumber(requestDto.getPhoneNumber());
-        responseUser.setRole(role.getName());
-        responseUser.setAccountStatus(AccountStatus.ACTIVE);
-        responseUser.setCreatedAt(user.getCreatedAt());
-        responseUser.setUpdatedAt(user.getUpdatedAt());
-
-        return responseUser;
-    }
 }
