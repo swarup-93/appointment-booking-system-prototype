@@ -5,19 +5,11 @@ import com.swarupdhavan.appointment_booking_system_prototype.dto.user.ResponseUs
 import com.swarupdhavan.appointment_booking_system_prototype.entity.Role;
 import com.swarupdhavan.appointment_booking_system_prototype.entity.User;
 import com.swarupdhavan.appointment_booking_system_prototype.enums.AccountStatus;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.util.stream.Collectors;
 
 @Component
 public class RegisterMapper {
-    private final PasswordEncoder passwordEncoder;
-
-
-    public RegisterMapper(PasswordEncoder passwordEncoder) {
-        this.passwordEncoder = passwordEncoder;
-    }
 
     public User mapToEntity(RequestUserDto request, String encodedPassword, Role role) {
         User user = new User();
