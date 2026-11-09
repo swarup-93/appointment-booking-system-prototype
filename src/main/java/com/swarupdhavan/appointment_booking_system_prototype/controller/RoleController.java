@@ -3,6 +3,7 @@ package com.swarupdhavan.appointment_booking_system_prototype.controller;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.role.RequestRoleDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.role.ResponseRoleDto;
 import com.swarupdhavan.appointment_booking_system_prototype.service.RoleService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
