@@ -5,6 +5,7 @@ import com.swarupdhavan.appointment_booking_system_prototype.dto.AccountStatus.R
 import com.swarupdhavan.appointment_booking_system_prototype.dto.AccountStatus.ResponseAccountStatusDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.user.ResponseUserDto;
 import com.swarupdhavan.appointment_booking_system_prototype.service.UserService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+//to add support bearer in doc
+@SecurityRequirement(name = "bearerAuth")
 @RestController
 @RequestMapping("api/admin/user")
 public class UserController {

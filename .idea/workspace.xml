@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="036b0699-b464-41b3-942f-e8ea3c14d612" name="Changes" comment="create admin flow for user &#10;create Register dto for avoid id exposure of role">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/config/ProjectConfig.java" afterDir="false" />
+    <list default="true" id="036b0699-b464-41b3-942f-e8ea3c14d612" name="Changes" comment="add open api documentation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/RoleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/UserController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,61 +49,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000000061687753" />
-      <entry key="S5" value="1.0009531295961496" />
-      <entry key="S10" value="1.0530110811280924" />
-      <entry key="S30" value="1.7819644581949943" />
-      <entry key="S60" value="2.614204732753165" />
-      <entry key="M2" value="4.009492893256137" />
-      <entry key="M5" value="10.362422226452594" />
-      <entry key="M10" value="22.254872602015944" />
-      <entry key="M15" value="33.771286520261796" />
-      <entry key="M30" value="68.03166987513154" />
-      <entry key="H1" value="139.43535847455954" />
-      <entry key="H2" value="268.0335406409347" />
-      <entry key="H4" value="447.2106107648651" />
-      <entry key="D1" value="1122.901225171005" />
-      <entry key="W1" value="1635.2409507092011" />
+      <entry key="MS100" value="1.0001165175245235" />
+      <entry key="MS500" value="1.2128109654606114" />
+      <entry key="S2" value="2.6408742347837935" />
+      <entry key="S5" value="4.334562773760555" />
+      <entry key="S10" value="5.419648913090457" />
+      <entry key="S30" value="6.404345535672631" />
+      <entry key="S60" value="6.693232951210951" />
+      <entry key="M2" value="6.910422614615625" />
+      <entry key="M5" value="8.949682271289017" />
+      <entry key="M10" value="16.77664957924714" />
+      <entry key="M15" value="26.5369835852988" />
+      <entry key="M30" value="58.76212204117318" />
+      <entry key="H1" value="128.632283414245" />
+      <entry key="H2" value="257.3409922885342" />
+      <entry key="H4" value="439.19971675705887" />
+      <entry key="D1" value="1123.5300634100993" />
+      <entry key="W1" value="1640.9122887471249" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="4.637346349711442E-121" />
-      <entry key="MS500" value="8.575390601892065E-25" />
-      <entry key="S2" value="9.745719846752652E-7" />
-      <entry key="S5" value="0.005072946907304023" />
-      <entry key="S10" value="0.1260855328733792" />
-      <entry key="S30" value="1.5470285219119817" />
-      <entry key="S60" value="3.6524546426177253" />
-      <entry key="M2" value="6.908630094452701" />
-      <entry key="M5" value="11.585382477479838" />
-      <entry key="M10" value="16.528339791149516" />
-      <entry key="M15" value="23.04828543920219" />
-      <entry key="M30" value="46.933350185627354" />
-      <entry key="H1" value="93.46279020873506" />
-      <entry key="H2" value="164.3056074313286" />
-      <entry key="H4" value="251.19949742732413" />
-      <entry key="D1" value="555.879493862796" />
-      <entry key="W1" value="785.7572134204615" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="1.7358554426766115E-113" />
+      <entry key="S5" value="1.0128384271052543E-45" />
+      <entry key="S10" value="5.633848766907713E-23" />
+      <entry key="S30" value="1.1827100744265577E-7" />
+      <entry key="S60" value="0.0010098917379137338" />
+      <entry key="M2" value="0.11487801797699723" />
+      <entry key="M5" value="2.2503412111924903" />
+      <entry key="M10" value="7.284474566393946" />
+      <entry key="M15" value="13.34805404180765" />
+      <entry key="M30" value="35.71669147278352" />
+      <entry key="H1" value="81.53302869635795" />
+      <entry key="H2" value="153.46162827251496" />
+      <entry key="H4" value="242.7685779895914" />
+      <entry key="D1" value="552.7256318069698" />
+      <entry key="W1" value="785.1187870398513" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.3498298970408595E-17" />
-      <entry key="MS500" value="4.227229323826458E-4" />
-      <entry key="S2" value="0.14338887751415905" />
-      <entry key="S5" value="0.46463213645691287" />
-      <entry key="S10" value="0.8406547598125567" />
-      <entry key="S30" value="3.1373307398859445" />
-      <entry key="S60" value="6.120423140067" />
-      <entry key="M2" value="10.80764894724239" />
-      <entry key="M5" value="21.8814643668253" />
-      <entry key="M10" value="38.731202778662485" />
-      <entry key="M15" value="56.76421489783337" />
-      <entry key="M30" value="114.89577302672977" />
-      <entry key="H1" value="232.8175215218752" />
-      <entry key="H2" value="432.25898015181787" />
-      <entry key="H4" value="698.3437825112467" />
-      <entry key="D1" value="1678.7543451783586" />
-      <entry key="W1" value="2420.992774591106" />
+      <entry key="MS100" value="0.9461717632702689" />
+      <entry key="MS500" value="1.2007654231172762" />
+      <entry key="S2" value="2.635627308417338" />
+      <entry key="S5" value="4.331094182684099" />
+      <entry key="S10" value="5.417425575922696" />
+      <entry key="S30" value="6.403449015062807" />
+      <entry key="S60" value="6.693730781844154" />
+      <entry key="M2" value="7.0232216714036015" />
+      <entry key="M5" value="11.187039239794066" />
+      <entry key="M10" value="24.038152723338758" />
+      <entry key="M15" value="39.85294544924296" />
+      <entry key="M30" value="94.4260993836393" />
+      <entry key="H1" value="210.0949680755402" />
+      <entry key="H2" value="410.72773949237575" />
+      <entry key="H4" value="681.9041930615983" />
+      <entry key="D1" value="1676.2294706525227" />
+      <entry key="W1" value="2426.02569057813" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -199,7 +199,8 @@
     <MESSAGE value="Update todos &#10;1- move registration enpoint in auth controller&#10;&#10;2- create mapper for the registration" />
     <MESSAGE value="fix empty username bug" />
     <MESSAGE value="create admin flow for user &#10;create Register dto for avoid id exposure of role" />
-    <option name="LAST_COMMIT_MESSAGE" value="create admin flow for user &#10;create Register dto for avoid id exposure of role" />
+    <MESSAGE value="add open api documentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="add open api documentation" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
