@@ -21,9 +21,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    //username
     @Column(nullable = false, unique = true, length = 50)
     private String username;
 
+    //role
     @ManyToMany
     @JoinTable(
             name = "user_roles",
@@ -32,25 +34,32 @@ public class User {
     )
     private Set<Role> roles = new HashSet<>();
 
+    //fullName
     @Column(nullable = false, length = 200)
     private String fullName;
 
+    //email
     @Column(nullable = false, length = 255, unique = true)
     private String email;
 
+    //passwordHash
     @Column(nullable = false)
     private String passwordHash;
 
+    //phoneNumber
     @Column(nullable = false, length=20)
     private String phoneNumber;
 
+    //acountStatus
     @Enumerated(EnumType.STRING)
     @Column(name = "account_status", nullable = false, length = 20)
     private AccountStatus accountStatus;
 
+    //createdAt
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
+    //updatedAt
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 

@@ -1,5 +1,6 @@
 package com.swarupdhavan.appointment_booking_system_prototype.service;
 
+import com.swarupdhavan.appointment_booking_system_prototype.dto.register.ResponseRegisterDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.user.RequestUserDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.user.ResponseUserDto;
 import com.swarupdhavan.appointment_booking_system_prototype.entity.Role;
@@ -27,7 +28,7 @@ public class AuthService {
     }
 
 
-    public ResponseUserDto registerUser(RequestUserDto requestDto) {
+    public ResponseRegisterDto registerUser(RequestUserDto requestDto) {
         String encodedPassword = passwordEncoder.encode(requestDto.getPassword());
         Role role = roleRepository.findByName("ROLE_USER").orElseThrow(()-> new ResourceNotFoundException("Role with name:ROLE_USER not found"));
         User RequstedUser = registerMapper.mapToEntity(requestDto,encodedPassword,role);

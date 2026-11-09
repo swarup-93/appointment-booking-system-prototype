@@ -2,6 +2,7 @@ package com.swarupdhavan.appointment_booking_system_prototype.controller;
 
 import com.swarupdhavan.appointment_booking_system_prototype.dto.login.LoginRequestDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.login.LoginResponseDto;
+import com.swarupdhavan.appointment_booking_system_prototype.dto.register.ResponseRegisterDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.user.RequestUserDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.user.ResponseUserDto;
 import com.swarupdhavan.appointment_booking_system_prototype.service.AuthService;
@@ -33,8 +34,8 @@ public class AuthController {
 
     // register
     @PostMapping("/register")
-    public ResponseEntity<ResponseUserDto> registerUser(@Valid @RequestBody RequestUserDto requestDto){
-        ResponseUserDto responseDto = authService.registerUser(requestDto);
+    public ResponseEntity<ResponseRegisterDto> registerUser(@Valid @RequestBody RequestUserDto requestDto){
+        ResponseRegisterDto responseDto = authService.registerUser(requestDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
     }
 

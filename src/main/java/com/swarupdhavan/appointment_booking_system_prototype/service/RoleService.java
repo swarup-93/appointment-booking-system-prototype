@@ -6,6 +6,7 @@ import com.swarupdhavan.appointment_booking_system_prototype.entity.Role;
 import com.swarupdhavan.appointment_booking_system_prototype.exception.ResourceNotFoundException;
 import com.swarupdhavan.appointment_booking_system_prototype.mapper.RoleMapper;
 import com.swarupdhavan.appointment_booking_system_prototype.repository.RoleRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -43,6 +44,7 @@ public class RoleService {
     }
 
     // add new role
+    @Transactional
     public ResponseRoleDto addRole(RequestRoleDto request) {
         Role role = mapper.mapToEntity(request);
         Role RoleResponse = roleRepository.save(role);

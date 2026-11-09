@@ -9,6 +9,7 @@ import com.swarupdhavan.appointment_booking_system_prototype.exception.ResourceN
 import com.swarupdhavan.appointment_booking_system_prototype.mapper.PatientMapper;
 import com.swarupdhavan.appointment_booking_system_prototype.repository.PatientRepository;
 import com.swarupdhavan.appointment_booking_system_prototype.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,7 @@ private final UserRepository userRepository;
     }
 
     //to create the new patient
+    @Transactional
     public ResponsePatientDto createPatientProfile(RequestPatientDto requestPatientDto) {
         UUID userId = UUID.fromString(SecurityContextHolder.getContext().getAuthentication().getName());
 
@@ -53,6 +55,7 @@ private final UserRepository userRepository;
         return patientMapper.mapToDto(patient);
     }
 
+    @Transactional
     public ResponsePatientDto updatePatientProfile(UUID patientId, UpdatePatientDto updateRequest) {
         Patient patientRecord = patientRepository.findById(patientId)
                 .orElseThrow(()-> new ResourceNotFoundException("Patient with the id "+ patientId +" not present"));
