@@ -49,7 +49,7 @@ public class SecurityConfig {
                 //.httpBasic(Customizer.withDefaults())
 
                 .authorizeHttpRequests(auth ->
-                    auth.requestMatchers("/auth/register","/auth/login").permitAll().anyRequest().authenticated()
+                    auth.requestMatchers("/auth/register","/auth/login","/swagger-ui/**", "/swagger-ui.html", "/v3/api-docs/**").permitAll().anyRequest().authenticated()
                 )
 
                 .sessionManagement(session ->
