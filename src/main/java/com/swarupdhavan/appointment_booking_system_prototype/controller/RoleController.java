@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+//to add support bearer in doc
+@SecurityRequirement(name = "bearerAuth")
 @RestController
 @RequestMapping("/api/role")
 public class RoleController {
