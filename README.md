@@ -105,7 +105,7 @@ The application uses OpenAPI and Swagger UI to provide interactive API documenta
 Once the application is running, access:
 
 ```text
-http://localhost:9000/swagger-ui/index.html
+http://localhost:8080/swagger-ui/index.html
 ```
 
 The documentation allows developers to explore available endpoints, inspect request and response structures, and test API operations.
