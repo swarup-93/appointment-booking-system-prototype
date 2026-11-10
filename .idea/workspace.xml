@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="036b0699-b464-41b3-942f-e8ea3c14d612" name="Changes" comment="add open api documentation">
+    <list default="true" id="036b0699-b464-41b3-942f-e8ea3c14d612" name="Changes" comment="update README.md">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/dto/RoleUpdate/RoleRequestDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/dto/RoleUpdate/RoleResponseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/mapper/RoleUpdateMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/RoleController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,61 +51,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0001165175245235" />
-      <entry key="MS500" value="1.2128109654606114" />
-      <entry key="S2" value="2.6408742347837935" />
-      <entry key="S5" value="4.334562773760555" />
-      <entry key="S10" value="5.419648913090457" />
-      <entry key="S30" value="6.404345535672631" />
-      <entry key="S60" value="6.693232951210951" />
-      <entry key="M2" value="6.910422614615625" />
-      <entry key="M5" value="8.949682271289017" />
-      <entry key="M10" value="16.77664957924714" />
-      <entry key="M15" value="26.5369835852988" />
-      <entry key="M30" value="58.76212204117318" />
-      <entry key="H1" value="128.632283414245" />
-      <entry key="H2" value="257.3409922885342" />
-      <entry key="H4" value="439.19971675705887" />
-      <entry key="D1" value="1123.5300634100993" />
-      <entry key="W1" value="1640.9122887471249" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000000000000753" />
+      <entry key="S2" value="1.000874733977124" />
+      <entry key="S5" value="1.0939093390621075" />
+      <entry key="S10" value="1.5102377032097924" />
+      <entry key="S30" value="3.2019636145664734" />
+      <entry key="S60" value="4.7812132248522605" />
+      <entry key="M2" value="6.880377976850977" />
+      <entry key="M5" value="15.561630753328929" />
+      <entry key="M10" value="32.9226354470017" />
+      <entry key="M15" value="47.950051314831974" />
+      <entry key="M30" value="83.25998692393361" />
+      <entry key="H1" value="145.81725875498051" />
+      <entry key="H2" value="269.8947244961249" />
+      <entry key="H4" value="467.0276189709817" />
+      <entry key="D1" value="1221.4081214226107" />
+      <entry key="W1" value="1783.134702469306" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="1.7358554426766115E-113" />
-      <entry key="S5" value="1.0128384271052543E-45" />
-      <entry key="S10" value="5.633848766907713E-23" />
-      <entry key="S30" value="1.1827100744265577E-7" />
-      <entry key="S60" value="0.0010098917379137338" />
-      <entry key="M2" value="0.11487801797699723" />
-      <entry key="M5" value="2.2503412111924903" />
-      <entry key="M10" value="7.284474566393946" />
-      <entry key="M15" value="13.34805404180765" />
-      <entry key="M30" value="35.71669147278352" />
-      <entry key="H1" value="81.53302869635795" />
-      <entry key="H2" value="153.46162827251496" />
-      <entry key="H4" value="242.7685779895914" />
-      <entry key="D1" value="552.7256318069698" />
-      <entry key="W1" value="785.1187870398513" />
+      <entry key="MS100" value="6.448453907642388E-98" />
+      <entry key="MS500" value="3.6483073659487324E-20" />
+      <entry key="S2" value="1.706466224045701E-5" />
+      <entry key="S5" value="0.02282849643792291" />
+      <entry key="S10" value="0.2909201888254609" />
+      <entry key="S30" value="1.9921013872355136" />
+      <entry key="S60" value="3.997634258629414" />
+      <entry key="M2" value="6.682748044123146" />
+      <entry key="M5" value="15.01172786478714" />
+      <entry key="M10" value="29.00358703595732" />
+      <entry key="M15" value="39.71104330570582" />
+      <entry key="M30" value="60.99347810394731" />
+      <entry key="H1" value="96.74779860963572" />
+      <entry key="H2" value="165.80298458162167" />
+      <entry key="H4" value="266.57585490483035" />
+      <entry key="D1" value="616.4305869053031" />
+      <entry key="W1" value="870.5244874958239" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9461717632702689" />
-      <entry key="MS500" value="1.2007654231172762" />
-      <entry key="S2" value="2.635627308417338" />
-      <entry key="S5" value="4.331094182684099" />
-      <entry key="S10" value="5.417425575922696" />
-      <entry key="S30" value="6.403449015062807" />
-      <entry key="S60" value="6.693730781844154" />
-      <entry key="M2" value="7.0232216714036015" />
-      <entry key="M5" value="11.187039239794066" />
-      <entry key="M10" value="24.038152723338758" />
-      <entry key="M15" value="39.85294544924296" />
-      <entry key="M30" value="94.4260993836393" />
-      <entry key="H1" value="210.0949680755402" />
-      <entry key="H2" value="410.72773949237575" />
-      <entry key="H4" value="681.9041930615983" />
-      <entry key="D1" value="1676.2294706525227" />
-      <entry key="W1" value="2426.02569057813" />
+      <entry key="MS100" value="0.004518313218380027" />
+      <entry key="MS500" value="0.339621571137285" />
+      <entry key="S2" value="0.7640853102752164" />
+      <entry key="S5" value="0.9991191476400495" />
+      <entry key="S10" value="1.685201600252169" />
+      <entry key="S30" value="5.04231864269779" />
+      <entry key="S60" value="8.630058973619144" />
+      <entry key="M2" value="13.432277767033494" />
+      <entry key="M5" value="30.431555940531837" />
+      <entry key="M10" value="61.771783340362695" />
+      <entry key="M15" value="87.51522725330517" />
+      <entry key="M30" value="144.13972390289737" />
+      <entry key="H1" value="242.47520701211846" />
+      <entry key="H2" value="435.6176639184637" />
+      <entry key="H4" value="733.535239175019" />
+      <entry key="D1" value="1837.8101472827782" />
+      <entry key="W1" value="2653.6533251962815" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -121,38 +123,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven.appointment-booking-system-prototype [clean].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "Spring Boot.AppointmentBookingSystemPrototypeApplication.executor": "Run",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven.appointment-booking-system-prototype [clean].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;Spring Boot.AppointmentBookingSystemPrototypeApplication.executor&quot;: &quot;Run&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="AppointmentBookingSystemPrototypeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <envs>
@@ -200,7 +202,11 @@
     <MESSAGE value="fix empty username bug" />
     <MESSAGE value="create admin flow for user &#10;create Register dto for avoid id exposure of role" />
     <MESSAGE value="add open api documentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="add open api documentation" />
+    <MESSAGE value="-add bearer support in open ai doc&#10;-allow access to swagger" />
+    <MESSAGE value="fix account status null issue" />
+    <MESSAGE value="support bearer in open api doc" />
+    <MESSAGE value="update README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="update README.md" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
