@@ -93,6 +93,7 @@ public class UserService {
         return roleUpdateMapper.mapToDto(userById, message);
     }
 
+    @Transactional
     // remove role by id
     public RoleResponseDto removeRoleById(UUID id, RoleRequestDto roleRequest) {
         User userById = userRepository.findById(id)
