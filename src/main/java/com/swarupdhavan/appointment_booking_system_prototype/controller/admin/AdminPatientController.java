@@ -42,9 +42,9 @@ public class AdminPatientController {
     }
 
     //hard delete patient
-//    @DeleteMapping("/{id}")
-//    ResponseEntity<ResponsePatientDto> deletePatientById(@PathVariable UUID id){
-//        ResponsePatientDto response = patientService.deletePatientById(id);
-//        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-//    }
+    @DeleteMapping("/{id}")
+    ResponseEntity<ResponsePatientDto> deletePatientById(@PathVariable UUID id){
+        patientService.deletePatientById(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 }
