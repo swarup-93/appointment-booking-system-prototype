@@ -46,7 +46,7 @@ public class PatientController {
                         .getName()
         );
 
-        ResponsePatientDto patientResponse = patientService.getPatientProfile(patientId);
+        ResponsePatientDto patientResponse = patientService.getPatientById(patientId);
         return ResponseEntity.status(HttpStatus.OK).body(patientResponse);
     }
 

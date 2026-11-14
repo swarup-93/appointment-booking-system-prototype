@@ -1,13 +1,16 @@
 package com.swarupdhavan.appointment_booking_system_prototype.service;
 
+import com.swarupdhavan.appointment_booking_system_prototype.dto.RoleUpdate.RoleRequestDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.patient.RequestPatientDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.patient.ResponsePatientDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.patient.UpdatePatientDto;
 import com.swarupdhavan.appointment_booking_system_prototype.entity.Patient;
+import com.swarupdhavan.appointment_booking_system_prototype.entity.Role;
 import com.swarupdhavan.appointment_booking_system_prototype.entity.User;
 import com.swarupdhavan.appointment_booking_system_prototype.exception.ResourceNotFoundException;
 import com.swarupdhavan.appointment_booking_system_prototype.mapper.PatientMapper;
 import com.swarupdhavan.appointment_booking_system_prototype.repository.PatientRepository;
+import com.swarupdhavan.appointment_booking_system_prototype.repository.RoleRepository;
 import com.swarupdhavan.appointment_booking_system_prototype.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,44 +21,49 @@ import java.util.UUID;
 
 @Service
 public class PatientService {
-private final PatientRepository patientRepository;
-private final PatientMapper patientMapper;
-private final UserRepository userRepository;
+    private final PatientRepository patientRepository;
+    private final PatientMapper patientMapper;
+    private final UserRepository userRepository;
+    private final UserService userService;
 
-    public PatientService(PatientRepository patientRepository, PatientMapper patientMapper, UserRepository userRepository) {
+    public PatientService(PatientRepository patientRepository,
+                          PatientMapper patientMapper,
+                          UserRepository userRepository,
+                          UserService userService) {
         this.patientRepository = patientRepository;
         this.patientMapper = patientMapper;
         this.userRepository = userRepository;
+        this.userService = userService;
     }
 
-    //to create the new patient
+    //to create the new patient profile
     @Transactional
     public ResponsePatientDto createPatientProfile(RequestPatientDto requestPatientDto) {
         UUID userId = UUID.fromString(SecurityContextHolder.getContext().getAuthentication().getName());
 
         User user = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User Not Found"));
 
+        // to handle already available profile
         if (patientRepository.findByUser_Id(userId).isPresent()) {
             throw new IllegalStateException(
                     "Patient profile already exists"
             );
         }
 
+        // adds patient role
+        RoleRequestDto requestDto = new RoleRequestDto();
+        requestDto.setName("ROLE_PATIENT");
+
+        userService.updateRoleById(userId, requestDto);
+
         Patient patient = patientMapper.mapToEntity(requestPatientDto);
+        patient.setUser(user);
         patientRepository.save(patient);
 
         return patientMapper.mapToDto(patient);
     }
 
-    //to get the
-    public ResponsePatientDto getPatientProfile(UUID patientId){
-        Patient patient = patientRepository.findById(patientId)
-                .orElseThrow(()->
-                        new ResourceNotFoundException("Patient with the id "+ patientId +" not present")
-                );
-        return patientMapper.mapToDto(patient);
-    }
-
+    //update profile
     @Transactional
     public ResponsePatientDto updatePatientProfile(UUID patientId, UpdatePatientDto updateRequest) {
         Patient patientRecord = patientRepository.findById(patientId)
@@ -78,8 +86,27 @@ private final UserRepository userRepository;
         return patientMapper.mapToDto(patientRecord);
     }
 
-    //get all patients
+    //get retrieve all patients
     public List<ResponsePatientDto> getAllPatients() {
+        List<Patient> allPatient = patientRepository.findAll();
 
+        return allPatient.stream()
+                .map(patientMapper::mapToDto)
+                .toList();
+    }
+
+    //get patient by id
+    public ResponsePatientDto getPatientById(UUID id) {
+        Patient patient = patientRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("patient not found"));
+
+        return patientMapper.mapToDto(patient);
+    }
+
+    public void deletePatientById(UUID id) {
+        Patient patientToBeDeleted = patientRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("patient not found"));
+
+        patientRepository.delete(patientToBeDeleted);
     }
 }
