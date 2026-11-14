@@ -1,4 +1,4 @@
-package com.swarupdhavan.appointment_booking_system_prototype.controller;
+package com.swarupdhavan.appointment_booking_system_prototype.controller.admin;
 
 
 import com.swarupdhavan.appointment_booking_system_prototype.dto.AccountStatus.RequestAccountStatusDto;
@@ -19,12 +19,12 @@ import java.util.UUID;
 //to add support bearer in doc
 @SecurityRequirement(name = "bearerAuth")
 @RestController
-@RequestMapping("api/admin/user")
-public class UserController {
+@RequestMapping("api/admin/users")
+public class AdminUserController {
 
     private final UserService userService;
 
-    public UserController(UserService userService) {
+    public AdminUserController(UserService userService) {
         this.userService = userService;
     }
 
@@ -56,6 +56,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
+    // removes the role by id
     @PatchMapping("/remove-role/{id}")
     ResponseEntity<RoleResponseDto> removeRoleById(@PathVariable UUID id,@Valid @RequestBody RoleRequestDto roleRequest){
         RoleResponseDto response = userService.removeRoleById(id, roleRequest);

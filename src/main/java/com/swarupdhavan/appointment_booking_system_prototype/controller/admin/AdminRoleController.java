@@ -1,4 +1,4 @@
-package com.swarupdhavan.appointment_booking_system_prototype.controller;
+package com.swarupdhavan.appointment_booking_system_prototype.controller.admin;
 
 import com.swarupdhavan.appointment_booking_system_prototype.dto.role.RequestRoleDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.role.ResponseRoleDto;
@@ -15,13 +15,13 @@ import java.util.UUID;
 //to add support bearer in doc
 @SecurityRequirement(name = "bearerAuth")
 @RestController
-@RequestMapping("/api/role")
-public class RoleController {
+@RequestMapping("/api/admin/role")
+public class AdminRoleController {
 
     //dependency injections
     private final RoleService roleService;
 
-    public RoleController(RoleService roleService){
+    public AdminRoleController(RoleService roleService){
         this.roleService = roleService;
     }
 

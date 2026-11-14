@@ -13,6 +13,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -75,5 +76,10 @@ private final UserRepository userRepository;
         patientRepository.save(patientRecord);
 
         return patientMapper.mapToDto(patientRecord);
+    }
+
+    //get all patients
+    public List<ResponsePatientDto> getAllPatients() {
+
     }
 }
