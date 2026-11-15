@@ -1,5 +1,6 @@
 package com.swarupdhavan.appointment_booking_system_prototype.dto.DocApplication;
 
+import com.swarupdhavan.appointment_booking_system_prototype.enums.ApplicationStatus;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,6 +18,8 @@ public class DocAppResponseDto {
     private String specialization;
     private String qualification;
     private int experienceYear;
+    private ApplicationStatus applicationStatus;
+    private String rejectionReason;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

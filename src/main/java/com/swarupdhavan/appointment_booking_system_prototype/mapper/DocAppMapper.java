@@ -27,6 +27,8 @@ public class DocAppMapper {
         response.setSpecialization(docApp.getSpecialization());
         response.setQualification(docApp.getQualification());
         response.setExperienceYear(docApp.getExperienceYears());
+        response.setRejectionReason(docApp.getRejectionReason());
+        response.setApplicationStatus(docApp.getApplicationStatus());
         response.setCreatedAt(docApp.getCreatedAt());
         response.setUpdatedAt(docApp.getUpdatedAt());
 
