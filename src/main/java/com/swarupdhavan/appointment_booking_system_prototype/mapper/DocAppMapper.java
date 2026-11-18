@@ -1,5 +1,6 @@
 package com.swarupdhavan.appointment_booking_system_prototype.mapper;
 
+import com.swarupdhavan.appointment_booking_system_prototype.dto.DocApplication.AdminDocAppResponseDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.DocApplication.DocAppRequestDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.DocApplication.DocAppResponseDto;
 import com.swarupdhavan.appointment_booking_system_prototype.entity.DoctorApplication;
@@ -29,6 +30,24 @@ public class DocAppMapper {
         response.setExperienceYear(docApp.getExperienceYears());
         response.setRejectionReason(docApp.getRejectionReason());
         response.setApplicationStatus(docApp.getApplicationStatus());
+        response.setCreatedAt(docApp.getCreatedAt());
+        response.setUpdatedAt(docApp.getUpdatedAt());
+
+        return response;
+    }
+
+    public AdminDocAppResponseDto mapToAdminDto(DoctorApplication docApp){
+        AdminDocAppResponseDto response = new AdminDocAppResponseDto();
+        response.setId(docApp.getId());
+        response.setMedicalRegistrationNumber(docApp.getMedicalRegistrationNumber());
+        response.setSpecialization(docApp.getSpecialization());
+        response.setQualification(docApp.getQualification());
+        response.setExperienceYear(docApp.getExperienceYears());
+        response.setRejectionReason(docApp.getRejectionReason());
+        response.setReviewedBy(docApp.getReviewer().getUsername());
+        response.setRejectionReason(docApp.getRejectionReason());
+        response.setApplicationStatus(docApp.getApplicationStatus());
+        response.setReviewedAt(docApp.getReviewedAt());
         response.setCreatedAt(docApp.getCreatedAt());
         response.setUpdatedAt(docApp.getUpdatedAt());
 
