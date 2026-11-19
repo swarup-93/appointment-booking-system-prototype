@@ -3,6 +3,7 @@ package com.swarupdhavan.appointment_booking_system_prototype.service;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.doctor.DoctorRequestDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.doctor.DoctorResponseDto;
 import com.swarupdhavan.appointment_booking_system_prototype.entity.Doctor;
+import com.swarupdhavan.appointment_booking_system_prototype.entity.User;
 import com.swarupdhavan.appointment_booking_system_prototype.exception.ResourceNotFoundException;
 import com.swarupdhavan.appointment_booking_system_prototype.mapper.DoctorMapper;
 import com.swarupdhavan.appointment_booking_system_prototype.repository.DoctorRepository;
@@ -35,9 +36,18 @@ public class DoctorService {
     }
 
     //create doctor record after approval (admin)
-    public void createDoctorRecord(DoctorRequestDto doctorRequestDto, UUID userId){
+    public void createDoctorRecord(DoctorRequestDto doctorRequestDto, User user){
         Doctor doctor = doctorMapper.mapToEntity(doctorRequestDto);
-        userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("user not found"));
+        doctor.setUser(user);
         doctorRepository.save(doctor);
+    }
+
+    public void deleteDoctorRecordByUserId(UUID applicantUserId){
+        Doctor doctor = doctorRepository.findByUser_id(applicantUserId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Doctor not found")
+                );
+
+        doctor.setIsActive(false);
     }
 }

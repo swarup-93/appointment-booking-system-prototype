@@ -19,7 +19,9 @@ public class AdminDocAppResponseDto {
     private int experienceYear;
     private ApplicationStatus applicationStatus;
     private String rejectionReason;
+    private String revocationReason;
     private String reviewedBy;
+    private LocalDateTime revokedAt;
     private LocalDateTime reviewedAt;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

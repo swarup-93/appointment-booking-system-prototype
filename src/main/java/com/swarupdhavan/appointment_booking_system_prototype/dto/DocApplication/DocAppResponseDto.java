@@ -20,6 +20,8 @@ public class DocAppResponseDto {
     private int experienceYear;
     private ApplicationStatus applicationStatus;
     private String rejectionReason;
+    private String revocationReason;
+    private LocalDateTime revokedAt;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 

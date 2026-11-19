@@ -46,7 +46,10 @@ public class Doctor {
             precision = 10,
             scale = 2
     )
-    private BigDecimal consultancyFees = BigDecimal.ZERO;;
+    private BigDecimal consultancyFees = BigDecimal.ZERO;
+
+    @Column(name = "is_active", nullable = false)
+    private Boolean isActive = true;
 
     @Column(nullable = false)
     private LocalDateTime createdAt;

@@ -1,10 +1,8 @@
 package com.swarupdhavan.appointment_booking_system_prototype.service;
 
-import com.swarupdhavan.appointment_booking_system_prototype.dto.DocApplication.AdminDocAppResponseDto;
-import com.swarupdhavan.appointment_booking_system_prototype.dto.DocApplication.DocAppRequestDto;
-import com.swarupdhavan.appointment_booking_system_prototype.dto.DocApplication.DocAppResponseDto;
-import com.swarupdhavan.appointment_booking_system_prototype.dto.DocApplication.RejectionRequestDto;
+import com.swarupdhavan.appointment_booking_system_prototype.dto.DocApplication.*;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.doctor.DoctorRequestDto;
+import com.swarupdhavan.appointment_booking_system_prototype.entity.Doctor;
 import com.swarupdhavan.appointment_booking_system_prototype.entity.DoctorApplication;
 import com.swarupdhavan.appointment_booking_system_prototype.entity.User;
 import com.swarupdhavan.appointment_booking_system_prototype.enums.ApplicationStatus;
@@ -118,8 +116,8 @@ public class DocAppService {
         //mapped doctor request with the application approved
         DoctorRequestDto doctorRequest = applicationToDoctorMapper.mapToDoctorRequest(applicationById);
 
-        //creates the doctor record as it approved
-        doctorService.createDoctorRecord(doctorRequest, userId);
+        //creates the doctor record as it approved and sends user id with it
+        doctorService.createDoctorRecord(doctorRequest, applicationById.getUser());
 
         //saves the application
         docAppRepository.save(applicationById);
@@ -153,6 +151,46 @@ public class DocAppService {
         applicationById.setReviewer(userService.getUserEntityById(userId));
         applicationById.setRejectionReason(rejectionDto.getRejectionReason());
         applicationById.setReviewedAt(LocalDateTime.now());
+        docAppRepository.save(applicationById);
+
+        return docAppMapper.mapToAdminDto(applicationById);
+    }
+
+    // todo: revoke the accepted application
+
+    //change status to revoke
+    //delete the doctor record but basis of what we gonna remove that
+    //save the application
+
+    @Transactional
+    public AdminDocAppResponseDto revokeApplication(UUID id, RevocationReasonDto revocationDto){
+        DoctorApplication applicationById = docAppRepository
+                .findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Application not found"));
+
+        if (applicationById.getApplicationStatus() != ApplicationStatus.APPROVED){
+            throw new IllegalStateException("Only Approved applications can be revoked.");
+        }
+
+        applicationById.setApplicationStatus(ApplicationStatus.REVOKED);
+
+        //get authenticated admin
+        UUID userId = UUID.fromString(
+                SecurityContextHolder
+                        .getContext()
+                        .getAuthentication()
+                        .getName()
+        );
+
+        applicationById.setReviewer(userService.getUserEntityById(userId));
+        applicationById.setRevocationReason(revocationDto.getRevocationReason());
+        applicationById.setRevokedAt(LocalDateTime.now());
+
+        UUID applicantUserId = applicationById.getUser().getId();
+        // todo need to implement the delete doctor record after revocation
+        doctorService.deleteDoctorRecordByUserId(applicantUserId);
+
+        //saves the updated application
         docAppRepository.save(applicationById);
 
         return docAppMapper.mapToAdminDto(applicationById);

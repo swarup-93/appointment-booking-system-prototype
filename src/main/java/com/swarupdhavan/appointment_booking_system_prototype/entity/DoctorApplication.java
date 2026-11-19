@@ -50,6 +50,12 @@ public class DoctorApplication {
 
     private LocalDateTime reviewedAt;
 
+    @Column(name = "revocation_reason", length = 500)
+    private String revocationReason;
+
+    @Column(name = "revoked_at")
+    private LocalDateTime revokedAt;
+
     @Column(nullable = false)
     private LocalDateTime createdAt;
 

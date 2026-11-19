@@ -17,8 +17,9 @@ public class DoctorResponseDto {
     private String specialization;
     private String qualification;
     private String licenceNumber;
-    private int experienceYear = 0;
+    private int experienceYear;
     private BigDecimal consultancyFees;
+    private Boolean isActive;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }
