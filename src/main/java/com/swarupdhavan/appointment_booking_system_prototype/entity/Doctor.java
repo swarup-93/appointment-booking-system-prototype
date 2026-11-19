@@ -46,7 +46,7 @@ public class Doctor {
             precision = 10,
             scale = 2
     )
-    private BigDecimal consultancyFees;
+    private BigDecimal consultancyFees = BigDecimal.ZERO;;
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
