@@ -60,6 +60,13 @@ public class UserService {
         return userMapper.mapToDto(user);
     }
 
+    //get user entity by id
+    public User getUserEntityById(UUID id){
+
+        return userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("user not found"));
+    }
+
     @Transactional
     public ResponseAccountStatusDto updateStatusById(UUID id, @Valid RequestAccountStatusDto request) {
         User user = userRepository.findById(id)

@@ -1,0 +1,2 @@
+ALTER TABLE doctors
+    MODIFY COLUMN consultancy_fees DECIMAL(10,2) NOT NULL DEFAULT 0.00;
