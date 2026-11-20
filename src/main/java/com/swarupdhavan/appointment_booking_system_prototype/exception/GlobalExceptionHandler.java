@@ -19,7 +19,23 @@ import java.util.UUID;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-//  custom exception (if resource not found)
+    // generic exception
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ExceptionResponseDto> handleGenericTimeException(Exception ex, HttpServletRequest request) {
+        ExceptionResponseDto exceptionResponse = new ExceptionResponseDto(
+                LocalDateTime.now(),
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(),
+                "Something went wrong. Please try again later",
+                request.getRequestURI()
+        );
+
+        return ResponseEntity
+                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(exceptionResponse);
+    }
+
+    //  custom exception (if resource not found)
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ExceptionResponseDto> handleResourceNotFound(
             ResourceNotFoundException ex,

@@ -3,6 +3,7 @@ package com.swarupdhavan.appointment_booking_system_prototype.controller;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.DocApplication.DocAppRequestDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.DocApplication.DocAppResponseDto;
 import com.swarupdhavan.appointment_booking_system_prototype.service.DocAppService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
+
+//to add support bearer in doc
+@SecurityRequirement(name = "bearerAuth")
 
 @RestController
 @RequestMapping("api/doctor-application")

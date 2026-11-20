@@ -30,6 +30,7 @@ public class RegisterMapper {
     public ResponseRegisterDto mapToDto(User user) {
         ResponseRegisterDto response = new ResponseRegisterDto();
 
+        response.setId(user.getId());
         response.setUsername(user.getUsername());
         response.setFullName(user.getFullName());
         response.setEmail(user.getEmail());

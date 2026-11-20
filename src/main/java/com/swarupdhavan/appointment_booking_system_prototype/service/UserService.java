@@ -53,6 +53,15 @@ public class UserService {
                 .toList();
     }
 
+    //get userid by name
+    public User getUserByUserName(String username){
+        User user = userRepository.findByUsername(username).orElseThrow(() ->
+                    new ResourceNotFoundException("User not found")
+                );
+
+        return user;
+    }
+
     // get users by id
     public ResponseUserDto getUserById(UUID id) {
         User user = userRepository.findById(id)
@@ -86,6 +95,9 @@ public class UserService {
     }
 
     //to add new role
+    // todo maybe we will need separate endpoint to update each role idk need to see
+    //  we can take reference of the approve status from doctor application flow
+
     @Transactional
     public RoleResponseDto updateRoleById(UUID id, RoleRequestDto roleRequest) {
         User userById = userRepository.findById(id)

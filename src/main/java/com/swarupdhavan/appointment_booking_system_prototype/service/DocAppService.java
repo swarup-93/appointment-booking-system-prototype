@@ -51,9 +51,8 @@ public class DocAppService {
     @Transactional
     public DocAppResponseDto submitApplication(DocAppRequestDto requestDto) {
 
-        UUID userId = UUID.fromString(SecurityContextHolder.getContext().getAuthentication().getName());
-
-        User user = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User Not Found"));
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userService.getUserByUserName(username);
 
         DoctorApplication application = docAppMapper.mapToEntity(requestDto);
         application.setUser(user);
@@ -102,12 +101,9 @@ public class DocAppService {
         applicationById.setApplicationStatus(ApplicationStatus.APPROVED);
 
         //get authenticated admin
-        UUID userId = UUID.fromString(
-                SecurityContextHolder
-                        .getContext()
-                        .getAuthentication()
-                        .getName()
-        );
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userService.getUserByUserName(username);
+        UUID userId = user.getId();
 
         //set reviewer detail from my application
         applicationById.setReviewer(userService.getUserEntityById(userId));
@@ -140,12 +136,9 @@ public class DocAppService {
         applicationById.setApplicationStatus(ApplicationStatus.REJECTED);
 
         //get authenticated admin
-        UUID userId = UUID.fromString(
-                SecurityContextHolder
-                        .getContext()
-                        .getAuthentication()
-                        .getName()
-        );
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userService.getUserByUserName(username);
+        UUID userId = user.getId();
 
         //set reviewer detail
         applicationById.setReviewer(userService.getUserEntityById(userId));
@@ -175,12 +168,9 @@ public class DocAppService {
         applicationById.setApplicationStatus(ApplicationStatus.REVOKED);
 
         //get authenticated admin
-        UUID userId = UUID.fromString(
-                SecurityContextHolder
-                        .getContext()
-                        .getAuthentication()
-                        .getName()
-        );
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userService.getUserByUserName(username);
+        UUID userId = user.getId();
 
         applicationById.setReviewer(userService.getUserEntityById(userId));
         applicationById.setRevocationReason(revocationDto.getRevocationReason());

@@ -12,12 +12,16 @@ import com.swarupdhavan.appointment_booking_system_prototype.dto.patient.Request
 import com.swarupdhavan.appointment_booking_system_prototype.dto.patient.ResponsePatientDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.patient.UpdatePatientDto;
 import com.swarupdhavan.appointment_booking_system_prototype.service.PatientService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
+
+//to add support bearer in doc
+@SecurityRequirement(name = "bearerAuth")
 
 @RestController
 @RequestMapping("/api/patient")

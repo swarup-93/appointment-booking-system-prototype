@@ -3,6 +3,7 @@ package com.swarupdhavan.appointment_booking_system_prototype.controller.admin;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.patient.ResponsePatientDto;
 import com.swarupdhavan.appointment_booking_system_prototype.repository.PatientRepository;
 import com.swarupdhavan.appointment_booking_system_prototype.service.PatientService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,9 @@ import java.util.UUID;
 //GET     /api/admin/patients/{id}
 //DELETE  /api/admin/patients/{id}
 
+
+//to add support bearer in doc
+@SecurityRequirement(name = "bearerAuth")
 
 @RestController
 @RequestMapping("api/admin/patients")

@@ -39,9 +39,10 @@ public class PatientService {
     //to create the new patient profile
     @Transactional
     public ResponsePatientDto createPatientProfile(RequestPatientDto requestPatientDto) {
-        UUID userId = UUID.fromString(SecurityContextHolder.getContext().getAuthentication().getName());
 
-        User user = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User Not Found"));
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userService.getUserByUserName(username);
+        UUID userId = user.getId();
 
         // to handle already available profile
         if (patientRepository.findByUser_Id(userId).isPresent()) {
