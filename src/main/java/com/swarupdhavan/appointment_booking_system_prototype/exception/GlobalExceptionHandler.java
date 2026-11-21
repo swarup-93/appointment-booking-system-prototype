@@ -137,4 +137,20 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(exceptionResponse);
     }
+
+    // generic exception
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ExceptionResponseDto> handleGenericTimeException(Exception ex, HttpServletRequest request) {
+        ExceptionResponseDto exceptionResponse = new ExceptionResponseDto(
+                LocalDateTime.now(),
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(),
+                "Something went wrong. Please try again later",
+                request.getRequestURI()
+        );
+
+        return ResponseEntity
+                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(exceptionResponse);
+    }
 }
