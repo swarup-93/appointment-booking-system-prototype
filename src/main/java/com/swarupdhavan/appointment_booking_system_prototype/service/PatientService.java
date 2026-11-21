@@ -66,9 +66,9 @@ public class PatientService {
 
     //update profile
     @Transactional
-    public ResponsePatientDto updatePatientProfile(UUID patientId, UpdatePatientDto updateRequest) {
-        Patient patientRecord = patientRepository.findById(patientId)
-                .orElseThrow(()-> new ResourceNotFoundException("Patient with the id "+ patientId +" not present"));
+    public ResponsePatientDto updatePatientProfile(UUID userId, UpdatePatientDto updateRequest) {
+        Patient patientRecord = patientRepository.findByUser_Id(userId)
+                .orElseThrow(()-> new ResourceNotFoundException("Patient with the id "+ userId +" not present"));
 
         if (updateRequest.getDateOfBirth() != null) {
             patientRecord.setDateOfBirth(updateRequest.getDateOfBirth());
@@ -100,6 +100,13 @@ public class PatientService {
     public ResponsePatientDto getPatientById(UUID id) {
         Patient patient = patientRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("patient not found"));
+
+        return patientMapper.mapToDto(patient);
+    }
+
+    public ResponsePatientDto getPatientByUserId(UUID id){
+        Patient patient = patientRepository.findByUser_Id(id).orElseThrow(() ->
+                new ResourceNotFoundException("Patient not found"));
 
         return patientMapper.mapToDto(patient);
     }

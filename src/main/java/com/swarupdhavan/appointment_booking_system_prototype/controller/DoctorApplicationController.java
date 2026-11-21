@@ -2,7 +2,9 @@ package com.swarupdhavan.appointment_booking_system_prototype.controller;
 
 import com.swarupdhavan.appointment_booking_system_prototype.dto.DocApplication.DocAppRequestDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.DocApplication.DocAppResponseDto;
+import com.swarupdhavan.appointment_booking_system_prototype.entity.User;
 import com.swarupdhavan.appointment_booking_system_prototype.service.DocAppService;
+import com.swarupdhavan.appointment_booking_system_prototype.service.UserService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -20,9 +22,11 @@ import java.util.UUID;
 public class DoctorApplicationController {
 
     private final DocAppService docAppService;
+    private final UserService userService;
 
-    public DoctorApplicationController(DocAppService docAppService){
+    public DoctorApplicationController(DocAppService docAppService, UserService userService){
         this.docAppService = docAppService;
+        this.userService = userService;
     }
 
     //create application
@@ -37,13 +41,11 @@ public class DoctorApplicationController {
     ResponseEntity<DocAppResponseDto> myApplication(){
 
         //gets the id
-        UUID UserId = UUID.fromString(
-                SecurityContextHolder
-                        .getContext()
-                        .getAuthentication()
-                        .getName()
-        );
-        DocAppResponseDto docAppResponse = docAppService.myApplication(UserId);
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userService.getUserByUserName(username);
+        UUID userId = user.getId();
+
+        DocAppResponseDto docAppResponse = docAppService.myApplication(userId);
         return ResponseEntity.status(HttpStatus.OK).body(docAppResponse);
     }
 }

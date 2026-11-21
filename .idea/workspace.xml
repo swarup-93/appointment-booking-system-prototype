@@ -9,13 +9,13 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/DoctorApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/DoctorApplicationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/PatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/PatientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/admin/AdminDoctorApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/admin/AdminDoctorApplicationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/admin/AdminDoctorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/admin/AdminDoctorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/admin/AdminPatientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/controller/admin/AdminPatientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/dto/DocApplication/DocAppRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/dto/DocApplication/DocAppRequestDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/mapper/DocAppMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/mapper/DocAppMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/mapper/RegisterMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/mapper/RegisterMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/repository/DocAppRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/repository/DocAppRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/service/DocAppService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/service/DocAppService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/service/PatientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/service/PatientService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/swarupdhavan/appointment_booking_system_prototype/service/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,61 +54,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.985690087039083E-5" />
-      <entry key="MS500" value="0.11470563486417061" />
-      <entry key="S2" value="0.6103527425924987" />
-      <entry key="S5" value="1.0458828814003112" />
-      <entry key="S10" value="1.387890424250082" />
-      <entry key="S30" value="1.8014583749070328" />
-      <entry key="S60" value="2.3479121492441513" />
-      <entry key="M2" value="3.576410746634578" />
-      <entry key="M5" value="6.205968094603949" />
-      <entry key="M10" value="10.793331101080938" />
-      <entry key="M15" value="15.926482639575092" />
-      <entry key="M30" value="38.19491850638744" />
-      <entry key="H1" value="94.41551081477856" />
-      <entry key="H2" value="185.58562937775466" />
-      <entry key="H4" value="315.8112183034004" />
-      <entry key="D1" value="1583.5334369172303" />
-      <entry key="W1" value="3498.239214671799" />
+      <entry key="MS100" value="6.473189099215452E-49" />
+      <entry key="MS500" value="2.302762354511738E-10" />
+      <entry key="S2" value="0.004255041485193894" />
+      <entry key="S5" value="0.16479460837495113" />
+      <entry key="S10" value="0.7142255222851813" />
+      <entry key="S30" value="2.9580431067488906" />
+      <entry key="S60" value="5.2027985921254105" />
+      <entry key="M2" value="7.365998193242037" />
+      <entry key="M5" value="9.644232039215463" />
+      <entry key="M10" value="12.449432192418351" />
+      <entry key="M15" value="16.206912612706617" />
+      <entry key="M30" value="37.633247448566436" />
+      <entry key="H1" value="102.3991497768998" />
+      <entry key="H2" value="223.75173477578616" />
+      <entry key="H4" value="395.8052792880077" />
+      <entry key="D1" value="1713.5617720463367" />
+      <entry key="W1" value="3698.5015821104794" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.000003362579948" />
-      <entry key="S2" value="1.0428221190680178" />
-      <entry key="S5" value="1.28357455687865" />
-      <entry key="S10" value="1.5325405516027932" />
-      <entry key="S30" value="1.8955945462763446" />
-      <entry key="S60" value="2.6393031860912126" />
-      <entry key="M2" value="4.200695522434778" />
-      <entry key="M5" value="7.065854423465489" />
-      <entry key="M10" value="11.286398372974649" />
-      <entry key="M15" value="14.89141593672688" />
-      <entry key="M30" value="22.99213836583282" />
-      <entry key="H1" value="36.783161769883144" />
-      <entry key="H2" value="58.34499974526337" />
-      <entry key="H4" value="95.89443438430347" />
-      <entry key="D1" value="628.572652974636" />
-      <entry key="W1" value="1513.5266164812874" />
+      <entry key="MS100" value="1.0000007964019009" />
+      <entry key="MS500" value="1.0609059550332878" />
+      <entry key="S2" value="1.75780475457182" />
+      <entry key="S5" value="3.2202767599878186" />
+      <entry key="S10" value="5.017791262073174" />
+      <entry key="S30" value="8.638942012333253" />
+      <entry key="S60" value="11.042211296538078" />
+      <entry key="M2" value="13.015326211631296" />
+      <entry key="M5" value="14.951584263356537" />
+      <entry key="M10" value="17.459707834195456" />
+      <entry key="M15" value="20.143289735636255" />
+      <entry key="M30" value="27.7642415143636" />
+      <entry key="H1" value="41.86277440772745" />
+      <entry key="H2" value="66.5363659296341" />
+      <entry key="H4" value="108.07837022133496" />
+      <entry key="D1" value="636.2169349316576" />
+      <entry key="W1" value="1544.8302101093634" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="4.5558719813856087E-4" />
-      <entry key="MS500" value="0.23622451912277437" />
-      <entry key="S2" value="1.109253384968078" />
-      <entry key="S5" value="1.9747008811658044" />
-      <entry key="S10" value="2.6838315850871655" />
-      <entry key="S30" value="3.5933903140610783" />
-      <entry key="S60" value="4.918219419419696" />
-      <entry key="M2" value="7.723221176434555" />
-      <entry key="M5" value="13.231651490502088" />
-      <entry key="M10" value="22.04038662953422" />
-      <entry key="M15" value="30.779754201654665" />
-      <entry key="M30" value="61.15429733824604" />
-      <entry key="H1" value="131.17029979061" />
-      <entry key="H2" value="243.90684485268002" />
-      <entry key="H4" value="411.6859700278022" />
-      <entry key="D1" value="2212.08479076789" />
-      <entry key="W1" value="5011.757637328332" />
+      <entry key="MS100" value="7.609030733236093E-4" />
+      <entry key="MS500" value="0.24888986873296276" />
+      <entry key="S2" value="1.165457843238619" />
+      <entry key="S5" value="2.8151038702182904" />
+      <entry key="S10" value="5.191900363097347" />
+      <entry key="S30" value="11.151053835048877" />
+      <entry key="S60" value="15.907761387921266" />
+      <entry key="M2" value="20.161361683453364" />
+      <entry key="M5" value="24.48628473795619" />
+      <entry key="M10" value="29.84023259646691" />
+      <entry key="M15" value="36.29453330529916" />
+      <entry key="M30" value="65.35645361279471" />
+      <entry key="H1" value="144.22963613490663" />
+      <entry key="H2" value="290.26149032447347" />
+      <entry key="H4" value="503.86171223089485" />
+      <entry key="D1" value="2349.7571651470726" />
+      <entry key="W1" value="5243.323456109344" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -214,7 +214,8 @@
     <MESSAGE value="crate entity for doctor, doctor_application, doctor_schedule" />
     <MESSAGE value="add enum for application status" />
     <MESSAGE value="add transactional for removeRoleById" />
-    <option name="LAST_COMMIT_MESSAGE" value="add transactional for removeRoleById" />
+    <MESSAGE value="to handle the generic exceptions" />
+    <option name="LAST_COMMIT_MESSAGE" value="to handle the generic exceptions" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

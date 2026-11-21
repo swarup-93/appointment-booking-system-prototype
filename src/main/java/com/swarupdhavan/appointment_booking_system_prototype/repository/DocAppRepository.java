@@ -8,4 +8,5 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface DocAppRepository extends JpaRepository<DoctorApplication, UUID> {
+    Optional<DoctorApplication> findByUser_Id(UUID id);
 }

@@ -11,7 +11,9 @@ package com.swarupdhavan.appointment_booking_system_prototype.controller;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.patient.RequestPatientDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.patient.ResponsePatientDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.patient.UpdatePatientDto;
+import com.swarupdhavan.appointment_booking_system_prototype.entity.User;
 import com.swarupdhavan.appointment_booking_system_prototype.service.PatientService;
+import com.swarupdhavan.appointment_booking_system_prototype.service.UserService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,9 +30,11 @@ import java.util.UUID;
 public class PatientController {
 
     private final PatientService patientService;
+    private final UserService userService;
 
-    public PatientController(PatientService patientService) {
+    public PatientController(PatientService patientService, UserService userService) {
         this.patientService = patientService;
+        this.userService = userService;
     }
 
     //onboarding for the profile
@@ -43,28 +47,22 @@ public class PatientController {
     //retrieval of patient profile
     @GetMapping("/me")
     ResponseEntity<ResponsePatientDto> getPatientProfile() {
-        UUID patientId = UUID.fromString(
-                SecurityContextHolder
-                        .getContext()
-                        .getAuthentication()
-                        .getName()
-        );
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userService.getUserByUserName(username);
+        UUID userId = user.getId();
 
-        ResponsePatientDto patientResponse = patientService.getPatientById(patientId);
+        ResponsePatientDto patientResponse = patientService.getPatientByUserId(userId);
         return ResponseEntity.status(HttpStatus.OK).body(patientResponse);
     }
 
     //update patient profile
     @PatchMapping("/me")
     ResponseEntity<ResponsePatientDto> updatePatientProfile(@RequestBody UpdatePatientDto updateRequest){
-        UUID patientId = UUID.fromString(
-                SecurityContextHolder
-                        .getContext()
-                        .getAuthentication()
-                        .getName()
-        );
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        User user = userService.getUserByUserName(username);
+        UUID userId = user.getId();
 
-        ResponsePatientDto responsePatient = patientService.updatePatientProfile(patientId,updateRequest);
+        ResponsePatientDto responsePatient = patientService.updatePatientProfile(userId,updateRequest);
 
         return ResponseEntity.status(HttpStatus.OK).body(responsePatient);
     }

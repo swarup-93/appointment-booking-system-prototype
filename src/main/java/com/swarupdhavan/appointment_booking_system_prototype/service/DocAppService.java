@@ -55,6 +55,7 @@ public class DocAppService {
         User user = userService.getUserByUserName(username);
 
         DoctorApplication application = docAppMapper.mapToEntity(requestDto);
+        application.setApplicationStatus(ApplicationStatus.PENDING);
         application.setUser(user);
         docAppRepository.save(application);
         return docAppMapper.mapToDto(application);
@@ -62,7 +63,7 @@ public class DocAppService {
 
     //view application
     public DocAppResponseDto myApplication(UUID userId) {
-        DoctorApplication doctorApplication = docAppRepository.findById(userId)
+        DoctorApplication doctorApplication = docAppRepository.findByUser_Id(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("application not found"));
 
         return docAppMapper.mapToDto(doctorApplication);
@@ -149,10 +150,8 @@ public class DocAppService {
         return docAppMapper.mapToAdminDto(applicationById);
     }
 
-    // todo: revoke the accepted application
-
     //change status to revoke
-    //delete the doctor record but basis of what we gonna remove that
+    //soft delete the doctor record based on the userId
     //save the application
 
     @Transactional
@@ -177,7 +176,7 @@ public class DocAppService {
         applicationById.setRevokedAt(LocalDateTime.now());
 
         UUID applicantUserId = applicationById.getUser().getId();
-        // todo need to implement the delete doctor record after revocation
+
         doctorService.deleteDoctorRecordByUserId(applicantUserId);
 
         //saves the updated application

@@ -2,6 +2,7 @@ package com.swarupdhavan.appointment_booking_system_prototype.dto.DocApplication
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,7 +29,7 @@ public class DocAppRequestDto {
     private String qualification;
 
     //experienceYear
-    @NotBlank(message = "experience field can not be empty")
-    @Min(value = 0, message = "Experience year can not be negative")
-    private int experienceYear;
+    @NotNull(message = "Experience year is required")
+    @Min(value = 0, message = "Experience year cannot be negative")
+    private Integer experienceYear;
 }

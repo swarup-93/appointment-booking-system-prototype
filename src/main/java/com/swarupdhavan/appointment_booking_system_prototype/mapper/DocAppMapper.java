@@ -44,7 +44,11 @@ public class DocAppMapper {
         response.setQualification(docApp.getQualification());
         response.setExperienceYear(docApp.getExperienceYears());
         response.setRejectionReason(docApp.getRejectionReason());
-        response.setReviewedBy(docApp.getReviewer().getUsername());
+        response.setReviewedBy(
+                docApp.getReviewer() != null
+                        ? docApp.getReviewer().getUsername()
+                        : null
+        );
         response.setRejectionReason(docApp.getRejectionReason());
         response.setApplicationStatus(docApp.getApplicationStatus());
         response.setReviewedAt(docApp.getReviewedAt());

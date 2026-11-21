@@ -2,6 +2,7 @@ package com.swarupdhavan.appointment_booking_system_prototype.controller.admin;
 
 import com.swarupdhavan.appointment_booking_system_prototype.dto.DocApplication.AdminDocAppResponseDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.DocApplication.RejectionRequestDto;
+import com.swarupdhavan.appointment_booking_system_prototype.dto.DocApplication.RevocationReasonDto;
 import com.swarupdhavan.appointment_booking_system_prototype.service.DocAppService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
@@ -53,6 +54,12 @@ public class AdminDoctorApplicationController {
     @PatchMapping("/{id}/reject")
     ResponseEntity<AdminDocAppResponseDto> rejectApplicationById(@PathVariable UUID id,@Valid @RequestBody RejectionRequestDto rejectionDto){
         AdminDocAppResponseDto response = docAppService.rejectApplicationById(id, rejectionDto);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+    @PatchMapping("/{id}/revoke")
+    ResponseEntity<AdminDocAppResponseDto> revokeApplicationById(@PathVariable UUID id, @Valid @RequestBody RevocationReasonDto revocationDto){
+        AdminDocAppResponseDto response = docAppService.revokeApplication(id, revocationDto);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }
