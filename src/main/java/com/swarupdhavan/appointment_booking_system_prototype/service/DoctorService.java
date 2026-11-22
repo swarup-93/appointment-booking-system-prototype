@@ -8,6 +8,7 @@ import com.swarupdhavan.appointment_booking_system_prototype.exception.ResourceN
 import com.swarupdhavan.appointment_booking_system_prototype.mapper.DoctorMapper;
 import com.swarupdhavan.appointment_booking_system_prototype.repository.DoctorRepository;
 import com.swarupdhavan.appointment_booking_system_prototype.repository.UserRepository;
+import org.springframework.data.repository.core.support.RepositoryMethodInvocationListener;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,12 +19,12 @@ public class DoctorService {
 
     private final DoctorRepository doctorRepository;
     private final DoctorMapper doctorMapper;
-    private final UserRepository userRepository;
+    private final RepositoryMethodInvocationListener repositoryMethodInvocationListener;
 
-    public DoctorService(DoctorRepository doctorRepository, DoctorMapper doctorMapper, UserRepository userRepository){
+    public DoctorService(DoctorRepository doctorRepository, DoctorMapper doctorMapper, RepositoryMethodInvocationListener repositoryMethodInvocationListener){
         this.doctorRepository = doctorRepository;
         this.doctorMapper = doctorMapper;
-        this.userRepository = userRepository;
+        this.repositoryMethodInvocationListener = repositoryMethodInvocationListener;
     }
 
     // to find all doctors (admin)
@@ -34,6 +35,8 @@ public class DoctorService {
                 .map(doctorMapper::mapToDto)
                 .toList();
     }
+
+    //get By id
 
     //create doctor record after approval (admin)
     public void createDoctorRecord(DoctorRequestDto doctorRequestDto, User user){
@@ -49,5 +52,12 @@ public class DoctorService {
                 );
 
         doctor.setIsActive(false);
+    }
+
+    public DoctorResponseDto getDoctorById(UUID id) {
+        Doctor doctorById = doctorRepository.findById(id).orElseThrow(() ->
+                new ResourceNotFoundException("doctor not found")
+        );
+        return doctorMapper.mapToDto(doctorById);
     }
 }
