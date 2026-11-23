@@ -18,7 +18,7 @@ public class DoctorSchedule {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(
             name = "doctor_id",
             nullable = false
