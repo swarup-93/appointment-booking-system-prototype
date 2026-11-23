@@ -177,7 +177,7 @@ public class DocAppService {
 
         UUID applicantUserId = applicationById.getUser().getId();
 
-        doctorService.deleteDoctorRecordByUserId(applicantUserId);
+        doctorService.deactivateDoctorRecordByUserId(applicantUserId);
 
         //saves the updated application
         docAppRepository.save(applicationById);

@@ -36,8 +36,6 @@ public class DoctorService {
                 .toList();
     }
 
-    //get By id
-
     //create doctor record after approval (admin)
     public void createDoctorRecord(DoctorRequestDto doctorRequestDto, User user){
         Doctor doctor = doctorMapper.mapToEntity(doctorRequestDto);
@@ -45,7 +43,7 @@ public class DoctorService {
         doctorRepository.save(doctor);
     }
 
-    public void deleteDoctorRecordByUserId(UUID applicantUserId){
+    public void deactivateDoctorRecordByUserId(UUID applicantUserId){
         Doctor doctor = doctorRepository.findByUser_id(applicantUserId)
                 .orElseThrow(() ->
                         new ResourceNotFoundException("Doctor not found")
@@ -54,6 +52,7 @@ public class DoctorService {
         doctor.setIsActive(false);
     }
 
+    //get By id
     public DoctorResponseDto getDoctorById(UUID id) {
         Doctor doctorById = doctorRepository.findById(id).orElseThrow(() ->
                 new ResourceNotFoundException("doctor not found")
