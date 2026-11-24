@@ -43,6 +43,7 @@ public class DoctorService {
         doctorRepository.save(doctor);
     }
 
+    // to deactivate the doctor
     public void deactivateDoctorRecordByUserId(UUID applicantUserId){
         Doctor doctor = doctorRepository.findByUser_id(applicantUserId)
                 .orElseThrow(() ->
@@ -59,4 +60,15 @@ public class DoctorService {
         );
         return doctorMapper.mapToDto(doctorById);
     }
+
+    // to get the doctor id by user id
+    public UUID getDoctorIdByUserId(UUID id){
+        Doctor doctor = doctorRepository.findByUser_id(id)
+                .orElseThrow(() ->
+                            new ResourceNotFoundException("doctor not found")
+                        );
+
+        return doctor.getId();
+    }
+
 }

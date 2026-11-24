@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
-//to add support bearer in doc
+//to add support bearer in open api doc
 @SecurityRequirement(name = "bearerAuth")
 
 @RestController
