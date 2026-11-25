@@ -40,6 +40,9 @@ public class DoctorSchedule {
     @Column(nullable = false, name = "is_available")
     private Boolean isAvailable = false;
 
+    @Column(nullable = false, name= "is_active")
+    private Boolean isActive = true;
+
     @Column(nullable = false)
     private LocalDateTime createdAt;
 

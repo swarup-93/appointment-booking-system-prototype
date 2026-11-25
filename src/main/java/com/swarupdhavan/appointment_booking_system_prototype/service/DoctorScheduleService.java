@@ -2,6 +2,7 @@ package com.swarupdhavan.appointment_booking_system_prototype.service;
 
 import com.swarupdhavan.appointment_booking_system_prototype.dto.DoctorSchedule.DoctorScheduleRequestDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.DoctorSchedule.DoctorScheduleResponseDto;
+import com.swarupdhavan.appointment_booking_system_prototype.dto.DoctorSchedule.UpdateScheduleAvailabilityDto;
 import com.swarupdhavan.appointment_booking_system_prototype.entity.Doctor;
 import com.swarupdhavan.appointment_booking_system_prototype.entity.DoctorSchedule;
 import com.swarupdhavan.appointment_booking_system_prototype.exception.ResourceNotFoundException;
@@ -120,5 +121,40 @@ public class DoctorScheduleService {
 //        doctorScheduleRepository.save(doctorScheduleRecord);
 
         return doctorScheduleMapper.mapToDto(doctorScheduleRecord);
+    }
+
+    // it is for the soft delete
+    @Transactional
+    public void deactivateScheduleById(UUID id) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        DoctorSchedule doctorScheduleRecord = doctorScheduleRepository.findByIdAndDoctor_User_Username(id, username)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Schedule not found")
+                );
+
+        if (!doctorScheduleRecord.getIsActive()) {
+            throw new IllegalStateException("Schedule is already inactive");
+        }
+
+        doctorScheduleRecord.setIsActive(false);
+    }
+
+
+    @Transactional
+    public void updateScheduleAvailability(UUID id,UpdateScheduleAvailabilityDto requestDto) {
+
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        DoctorSchedule schedule = doctorScheduleRepository.findByIdAndDoctor_User_Username(id, username)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Schedule not found")
+                );
+
+        if (!schedule.getIsActive()) {
+            throw new IllegalStateException("Cannot update availability of an inactive schedule");
+        }
+
+        schedule.setIsAvailable(requestDto.getIsAvailable());
     }
 }

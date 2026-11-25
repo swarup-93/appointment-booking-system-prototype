@@ -26,6 +26,7 @@ public class DoctorScheduleMapper {
         doctorScheduleResponseDto.setEndTime(doctorSchedule.getEndTime());
         doctorSchedule.setSlotDurationMinutes(doctorSchedule.getSlotDurationMinutes());
         doctorScheduleResponseDto.setIsAvailable(doctorSchedule.getIsAvailable());
+        doctorScheduleResponseDto.setIsActive(doctorSchedule.getIsActive());
         doctorScheduleResponseDto.setCreatedAt(doctorSchedule.getCreatedAt());
         doctorSchedule.setUpdatedAt(doctorSchedule.getUpdatedAt());
 

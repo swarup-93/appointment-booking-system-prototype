@@ -2,9 +2,7 @@ package com.swarupdhavan.appointment_booking_system_prototype.controller;
 
 import com.swarupdhavan.appointment_booking_system_prototype.dto.DoctorSchedule.DoctorScheduleRequestDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.DoctorSchedule.DoctorScheduleResponseDto;
-import com.swarupdhavan.appointment_booking_system_prototype.dto.doctor.DoctorRequestDto;
-import com.swarupdhavan.appointment_booking_system_prototype.dto.doctor.DoctorResponseDto;
-import com.swarupdhavan.appointment_booking_system_prototype.entity.DoctorSchedule;
+import com.swarupdhavan.appointment_booking_system_prototype.dto.DoctorSchedule.UpdateScheduleAvailabilityDto;
 import com.swarupdhavan.appointment_booking_system_prototype.service.DoctorScheduleService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -57,5 +55,21 @@ public class DoctorScheduleController {
     ResponseEntity<DoctorScheduleResponseDto> updateSchedule(@PathVariable UUID id ,@Valid @RequestBody DoctorScheduleRequestDto doctorScheduleRequestDto){
         DoctorScheduleResponseDto doctorScheduleResponse = doctorScheduleService.updateSchedule(id,doctorScheduleRequestDto);
         return ResponseEntity.status(HttpStatus.OK).body(doctorScheduleResponse);
+    }
+
+    // to softly delete
+    @DeleteMapping("/{id}")
+    ResponseEntity<DoctorScheduleResponseDto> deactivateScheduleById(@PathVariable UUID id){
+        doctorScheduleService.deactivateScheduleById(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    // set availability
+    @PatchMapping("/{id}/availability")
+    public ResponseEntity<Void> updateScheduleAvailability(@PathVariable UUID id,@Valid @RequestBody UpdateScheduleAvailabilityDto requestDto) {
+
+        doctorScheduleService.updateScheduleAvailability(id, requestDto);
+
+        return ResponseEntity.noContent().build();
     }
 }

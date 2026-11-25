@@ -21,6 +21,7 @@ public class DoctorScheduleResponseDto {
     private LocalTime endTime;
     private int slotDurationMinutes;
     private Boolean isAvailable = false;
+    private Boolean isActive = true;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 }
