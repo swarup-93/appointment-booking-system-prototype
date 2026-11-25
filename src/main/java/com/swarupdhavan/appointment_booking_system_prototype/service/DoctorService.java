@@ -7,8 +7,6 @@ import com.swarupdhavan.appointment_booking_system_prototype.entity.User;
 import com.swarupdhavan.appointment_booking_system_prototype.exception.ResourceNotFoundException;
 import com.swarupdhavan.appointment_booking_system_prototype.mapper.DoctorMapper;
 import com.swarupdhavan.appointment_booking_system_prototype.repository.DoctorRepository;
-import com.swarupdhavan.appointment_booking_system_prototype.repository.UserRepository;
-import org.springframework.data.repository.core.support.RepositoryMethodInvocationListener;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,12 +17,10 @@ public class DoctorService {
 
     private final DoctorRepository doctorRepository;
     private final DoctorMapper doctorMapper;
-    private final RepositoryMethodInvocationListener repositoryMethodInvocationListener;
 
-    public DoctorService(DoctorRepository doctorRepository, DoctorMapper doctorMapper, RepositoryMethodInvocationListener repositoryMethodInvocationListener){
+    public DoctorService(DoctorRepository doctorRepository, DoctorMapper doctorMapper){
         this.doctorRepository = doctorRepository;
         this.doctorMapper = doctorMapper;
-        this.repositoryMethodInvocationListener = repositoryMethodInvocationListener;
     }
 
     // to find all doctors (admin)
