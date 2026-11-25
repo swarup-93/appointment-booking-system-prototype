@@ -70,11 +70,11 @@ public class UserService {
     }
 
     //get user entity by id
-    public User getUserEntityById(UUID id){
-
-        return userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("user not found"));
-    }
+//    public User getUserEntityById(UUID id){
+//
+//        return userRepository.findById(id)
+//                .orElseThrow(() -> new ResourceNotFoundException("user not found"));
+//    }
 
     @Transactional
     public ResponseAccountStatusDto updateStatusById(UUID id, @Valid RequestAccountStatusDto request) {

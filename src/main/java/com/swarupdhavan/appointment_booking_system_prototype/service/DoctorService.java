@@ -53,6 +53,13 @@ public class DoctorService {
         doctor.setIsActive(false);
     }
 
+    // get doctor by username
+    public Doctor getDoctorByUsername(String username) {
+        return doctorRepository.findByUser_Username(username)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Doctor not found"));
+    }
+
     //get By id
     public DoctorResponseDto getDoctorById(UUID id) {
         Doctor doctorById = doctorRepository.findById(id).orElseThrow(() ->
@@ -71,4 +78,11 @@ public class DoctorService {
         return doctor.getId();
     }
 
+    // get doctor by id
+    public Doctor getDoctorEntityById(UUID id){
+        return doctorRepository.findById(id)
+                .orElseThrow(() ->
+                            new ResourceNotFoundException("doctor not found")
+                        );
+    }
 }

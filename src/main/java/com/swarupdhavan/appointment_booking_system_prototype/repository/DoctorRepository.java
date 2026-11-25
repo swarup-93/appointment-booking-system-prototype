@@ -8,4 +8,5 @@ import java.util.UUID;
 
 public interface DoctorRepository extends JpaRepository<Doctor, UUID> {
     Optional<Doctor> findByUser_id(UUID id);
+    Optional<Doctor> findByUser_Username(String username);
 }

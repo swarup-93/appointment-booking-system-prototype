@@ -27,7 +27,6 @@ public class DocAppService {
     private final DocAppRepository docAppRepository;
     private final DocAppMapper docAppMapper;
     private final UserService userService;
-    private final UserRepository userRepository;
     private final DoctorService doctorService;
     private final ApplicationToDoctorMapper applicationToDoctorMapper;
 
@@ -35,14 +34,12 @@ public class DocAppService {
             DocAppRepository docAppRepository,
             DocAppMapper docAppMapper,
             UserService userService,
-            UserRepository userRepository,
             DoctorService doctorService,
             ApplicationToDoctorMapper applicationToDoctorMapper
     ){
         this.docAppRepository = docAppRepository;
         this.docAppMapper = docAppMapper;
         this.userService = userService;
-        this.userRepository = userRepository;
         this.doctorService = doctorService;
         this.applicationToDoctorMapper = applicationToDoctorMapper;
     }
@@ -86,7 +83,7 @@ public class DocAppService {
         return docAppMapper.mapToAdminDto(applicationById);
     }
 
-    //approve the application status
+    //approve the application status (admin)
     @Transactional
     public AdminDocAppResponseDto approveApplicationById(UUID id) {
 
@@ -103,11 +100,10 @@ public class DocAppService {
 
         //get authenticated admin
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        User user = userService.getUserByUserName(username);
-        UUID userId = user.getId();
+        User admin = userService.getUserByUserName(username);
 
         //set reviewer detail from my application
-        applicationById.setReviewer(userService.getUserEntityById(userId));
+        applicationById.setReviewer(admin);
         applicationById.setReviewedAt(LocalDateTime.now());
 
         //mapped doctor request with the application approved
@@ -125,6 +121,7 @@ public class DocAppService {
     // to reject the application
     @Transactional
     public AdminDocAppResponseDto rejectApplicationById(UUID id, RejectionRequestDto rejectionDto) {
+        //finds application
         DoctorApplication applicationById = docAppRepository
                 .findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Application not found"));
@@ -138,11 +135,10 @@ public class DocAppService {
 
         //get authenticated admin
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        User user = userService.getUserByUserName(username);
-        UUID userId = user.getId();
+        User admin = userService.getUserByUserName(username);
 
         //set reviewer detail
-        applicationById.setReviewer(userService.getUserEntityById(userId));
+        applicationById.setReviewer(admin);
         applicationById.setRejectionReason(rejectionDto.getRejectionReason());
         applicationById.setReviewedAt(LocalDateTime.now());
         docAppRepository.save(applicationById);
@@ -153,9 +149,10 @@ public class DocAppService {
     //change status to revoke
     //soft delete the doctor record based on the userId
     //save the application
-
     @Transactional
     public AdminDocAppResponseDto revokeApplication(UUID id, RevocationReasonDto revocationDto){
+
+        //finds application
         DoctorApplication applicationById = docAppRepository
                 .findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Application not found"));
@@ -168,15 +165,15 @@ public class DocAppService {
 
         //get authenticated admin
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        User user = userService.getUserByUserName(username);
-        UUID userId = user.getId();
+        User admin = userService.getUserByUserName(username);
 
-        applicationById.setReviewer(userService.getUserEntityById(userId));
+        applicationById.setReviewer(admin);
         applicationById.setRevocationReason(revocationDto.getRevocationReason());
         applicationById.setRevokedAt(LocalDateTime.now());
 
         UUID applicantUserId = applicationById.getUser().getId();
 
+        // deactivate the doctor
         doctorService.deactivateDoctorRecordByUserId(applicantUserId);
 
         //saves the updated application
