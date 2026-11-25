@@ -2,9 +2,11 @@ package com.swarupdhavan.appointment_booking_system_prototype.controller;
 
 import com.swarupdhavan.appointment_booking_system_prototype.dto.DoctorSchedule.DoctorScheduleRequestDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.DoctorSchedule.DoctorScheduleResponseDto;
+import com.swarupdhavan.appointment_booking_system_prototype.dto.doctor.DoctorRequestDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.doctor.DoctorResponseDto;
 import com.swarupdhavan.appointment_booking_system_prototype.entity.DoctorSchedule;
 import com.swarupdhavan.appointment_booking_system_prototype.service.DoctorScheduleService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,9 +45,17 @@ public class DoctorScheduleController {
         return ResponseEntity.status(HttpStatus.OK).body(doctorScheduleResponse);
     }
 
+    // create schedule
     @PostMapping
-    ResponseEntity<DoctorScheduleResponseDto> createSchedule(@RequestBody DoctorScheduleRequestDto doctorScheduleRequest){
+    ResponseEntity<DoctorScheduleResponseDto> createSchedule(@Valid @RequestBody DoctorScheduleRequestDto doctorScheduleRequest){
         DoctorScheduleResponseDto doctorScheduleResponse = doctorScheduleService.createSchedule(doctorScheduleRequest);
+        return ResponseEntity.status(HttpStatus.OK).body(doctorScheduleResponse);
+    }
+
+    // update an existing schedule
+    @PatchMapping("/{id}")
+    ResponseEntity<DoctorScheduleResponseDto> updateSchedule(@PathVariable UUID id ,@Valid @RequestBody DoctorScheduleRequestDto doctorScheduleRequestDto){
+        DoctorScheduleResponseDto doctorScheduleResponse = doctorScheduleService.updateSchedule(id,doctorScheduleRequestDto);
         return ResponseEntity.status(HttpStatus.OK).body(doctorScheduleResponse);
     }
 }

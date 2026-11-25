@@ -4,7 +4,6 @@ import com.swarupdhavan.appointment_booking_system_prototype.dto.DoctorSchedule.
 import com.swarupdhavan.appointment_booking_system_prototype.dto.DoctorSchedule.DoctorScheduleResponseDto;
 import com.swarupdhavan.appointment_booking_system_prototype.entity.Doctor;
 import com.swarupdhavan.appointment_booking_system_prototype.entity.DoctorSchedule;
-import com.swarupdhavan.appointment_booking_system_prototype.entity.User;
 import com.swarupdhavan.appointment_booking_system_prototype.exception.ResourceNotFoundException;
 import com.swarupdhavan.appointment_booking_system_prototype.mapper.DoctorScheduleMapper;
 import com.swarupdhavan.appointment_booking_system_prototype.repository.DoctorScheduleRepository;
@@ -18,17 +17,14 @@ import java.util.UUID;
 @Service
 public class DoctorScheduleService {
 
-    private final UserService userService;
     private final DoctorService doctorService;
     private final DoctorScheduleRepository doctorScheduleRepository;
     private final DoctorScheduleMapper doctorScheduleMapper;
 
-    public DoctorScheduleService(UserService userService,
-                                 DoctorService doctorService,
+    public DoctorScheduleService(DoctorService doctorService,
                                  DoctorScheduleRepository doctorScheduleRepository,
                                  DoctorScheduleMapper doctorScheduleMapper
     ){
-        this.userService = userService;
         this.doctorService = doctorService;
         this.doctorScheduleRepository = doctorScheduleRepository;
         this.doctorScheduleMapper = doctorScheduleMapper;
@@ -85,5 +81,44 @@ public class DoctorScheduleService {
         DoctorSchedule doctorScheduleResponse = doctorScheduleRepository.save(doctorSchedule);
 
         return doctorScheduleMapper.mapToDto(doctorScheduleResponse);
+    }
+
+
+    // updates the record
+    @Transactional
+    public DoctorScheduleResponseDto updateSchedule(UUID id,DoctorScheduleRequestDto doctorScheduleRequestDto) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        DoctorSchedule doctorScheduleRecord = doctorScheduleRepository.findByIdAndDoctor_User_Username(id, username)
+                                            .orElseThrow(() ->
+                                                        new ResourceNotFoundException("Schedule not found")
+                                                    );
+
+        if (doctorScheduleRequestDto.getAvailableDate() != null){
+            doctorScheduleRecord.setAvailableDate(doctorScheduleRequestDto.getAvailableDate());
+        }
+
+        if (doctorScheduleRequestDto.getStartTime() != null){
+            doctorScheduleRecord.setStartTime(doctorScheduleRequestDto.getStartTime());
+        }
+
+        if (doctorScheduleRequestDto.getEndTime() != null){
+            doctorScheduleRecord.setEndTime(doctorScheduleRequestDto.getEndTime());
+        }
+
+        if (doctorScheduleRequestDto.getIsAvailable() != null){
+            doctorScheduleRecord.setIsAvailable(doctorScheduleRequestDto.getIsAvailable());
+        }
+
+        if (!doctorScheduleRecord.getStartTime()
+                .isBefore(doctorScheduleRecord.getEndTime())) {
+            throw new IllegalArgumentException(
+                    "Start time must be before end time"
+            );
+        }
+
+//        doctorScheduleRepository.save(doctorScheduleRecord);
+
+        return doctorScheduleMapper.mapToDto(doctorScheduleRecord);
     }
 }

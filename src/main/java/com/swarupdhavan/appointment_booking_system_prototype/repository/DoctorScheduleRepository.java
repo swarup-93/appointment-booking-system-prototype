@@ -1,5 +1,6 @@
 package com.swarupdhavan.appointment_booking_system_prototype.repository;
 
+import com.swarupdhavan.appointment_booking_system_prototype.entity.Doctor;
 import com.swarupdhavan.appointment_booking_system_prototype.entity.DoctorSchedule;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,4 +18,6 @@ public interface DoctorScheduleRepository extends JpaRepository<DoctorSchedule, 
             UUID id,
             String username
     );
+
+//    Optional<DoctorSchedule> findByIdAndDoctor_User_Username(UUID id,String username);
 }
