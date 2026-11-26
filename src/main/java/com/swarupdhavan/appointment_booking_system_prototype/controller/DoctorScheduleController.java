@@ -2,8 +2,10 @@ package com.swarupdhavan.appointment_booking_system_prototype.controller;
 
 import com.swarupdhavan.appointment_booking_system_prototype.dto.DoctorSchedule.DoctorScheduleRequestDto;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.DoctorSchedule.DoctorScheduleResponseDto;
+import com.swarupdhavan.appointment_booking_system_prototype.dto.DoctorSchedule.UpdateDoctorScheduleRequest;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.DoctorSchedule.UpdateScheduleAvailabilityDto;
 import com.swarupdhavan.appointment_booking_system_prototype.service.DoctorScheduleService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,8 @@ import java.util.UUID;
 //PUT	        /api/doctor/schedules/{id}	            Update an existing schedule
 //DELETE	    /api/doctor/schedules/{id}	            Delete a schedule
 //PATCH	        /api/doctor/schedules/{id}              availability	Enable/disable a schedule
+
+@SecurityRequirement(name = "bearerAuth")
 
 @RestController
 @RequestMapping("api/doctor/schedules")
@@ -52,8 +56,8 @@ public class DoctorScheduleController {
 
     // update an existing schedule
     @PatchMapping("/{id}")
-    ResponseEntity<DoctorScheduleResponseDto> updateSchedule(@PathVariable UUID id ,@Valid @RequestBody DoctorScheduleRequestDto doctorScheduleRequestDto){
-        DoctorScheduleResponseDto doctorScheduleResponse = doctorScheduleService.updateSchedule(id,doctorScheduleRequestDto);
+    ResponseEntity<DoctorScheduleResponseDto> updateSchedule(@PathVariable UUID id , @Valid @RequestBody UpdateDoctorScheduleRequest doctorScheduleUpdate){
+        DoctorScheduleResponseDto doctorScheduleResponse = doctorScheduleService.updateSchedule(id, doctorScheduleUpdate);
         return ResponseEntity.status(HttpStatus.OK).body(doctorScheduleResponse);
     }
 
