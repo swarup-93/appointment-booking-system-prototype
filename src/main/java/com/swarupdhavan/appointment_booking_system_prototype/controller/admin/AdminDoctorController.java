@@ -20,7 +20,7 @@ import java.util.UUID;
 @SecurityRequirement(name = "bearerAuth")
 
 @RestController
-@RequestMapping("api/admin/patients")
+@RequestMapping("api/admin/doctor")
 public class AdminDoctorController {
 
     public final DoctorService doctorService;

@@ -23,7 +23,7 @@ import java.util.UUID;
 @SecurityRequirement(name = "bearerAuth")
 
 @RestController
-@RequestMapping("api/admin/DoctorApplication")
+@RequestMapping("api/admin/doctor-application")
 public class AdminDoctorApplicationController {
     private final DocAppService docAppService;
 

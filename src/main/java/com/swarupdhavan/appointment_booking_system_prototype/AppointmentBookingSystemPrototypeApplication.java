@@ -8,6 +8,7 @@ public class AppointmentBookingSystemPrototypeApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AppointmentBookingSystemPrototypeApplication.class, args);
+		System.out.println("api started....");
 	}
 
 }
