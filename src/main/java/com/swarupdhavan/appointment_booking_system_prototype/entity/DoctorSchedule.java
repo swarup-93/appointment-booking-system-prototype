@@ -38,7 +38,7 @@ public class DoctorSchedule {
     private int slotDurationMinutes;
 
     @Column(nullable = false, name = "is_available")
-    private Boolean isAvailable = false;
+    private Boolean isAvailable = true;
 
     @Column(nullable = false, name= "is_active")
     private Boolean isActive = true;
