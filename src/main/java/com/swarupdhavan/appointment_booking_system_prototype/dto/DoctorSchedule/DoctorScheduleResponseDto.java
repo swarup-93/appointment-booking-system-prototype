@@ -15,7 +15,8 @@ import java.util.UUID;
 @NoArgsConstructor
 public class DoctorScheduleResponseDto {
     private UUID id;
-    private Doctor doctor;
+//    private Doctor doctor;
+    private UUID DoctorId;
     private LocalDate availableDate;
     private LocalTime startTime;
     private LocalTime endTime;

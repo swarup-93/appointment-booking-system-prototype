@@ -10,25 +10,24 @@ public class DoctorScheduleMapper {
 
     public DoctorSchedule mapToEntity(DoctorScheduleRequestDto doctorScheduleRequestDto){
         DoctorSchedule doctorSchedule = new DoctorSchedule();
-        doctorSchedule.setAvailableDate(doctorSchedule.getAvailableDate());
-        doctorSchedule.setStartTime(doctorSchedule.getStartTime());
-        doctorSchedule.setEndTime(doctorSchedule.getEndTime());
-        doctorSchedule.setIsAvailable(doctorSchedule.getIsAvailable());
+        doctorSchedule.setAvailableDate(doctorScheduleRequestDto.getAvailableDate());
+        doctorSchedule.setStartTime(doctorScheduleRequestDto.getStartTime());
+        doctorSchedule.setEndTime(doctorScheduleRequestDto.getEndTime());
         return doctorSchedule;
     }
 
     public DoctorScheduleResponseDto mapToDto(DoctorSchedule doctorSchedule){
         DoctorScheduleResponseDto doctorScheduleResponseDto = new DoctorScheduleResponseDto();
         doctorScheduleResponseDto.setId(doctorSchedule.getId());
-        doctorScheduleResponseDto.setDoctor(doctorSchedule.getDoctor());
+        doctorScheduleResponseDto.setDoctorId(doctorSchedule.getDoctor().getId());
         doctorScheduleResponseDto.setAvailableDate(doctorSchedule.getAvailableDate());
         doctorScheduleResponseDto.setStartTime(doctorSchedule.getStartTime());
         doctorScheduleResponseDto.setEndTime(doctorSchedule.getEndTime());
-        doctorSchedule.setSlotDurationMinutes(doctorSchedule.getSlotDurationMinutes());
+        doctorScheduleResponseDto.setSlotDurationMinutes(doctorSchedule.getSlotDurationMinutes());
         doctorScheduleResponseDto.setIsAvailable(doctorSchedule.getIsAvailable());
         doctorScheduleResponseDto.setIsActive(doctorSchedule.getIsActive());
         doctorScheduleResponseDto.setCreatedAt(doctorSchedule.getCreatedAt());
-        doctorSchedule.setUpdatedAt(doctorSchedule.getUpdatedAt());
+        doctorScheduleResponseDto.setUpdatedAt(doctorSchedule.getUpdatedAt());
 
         return doctorScheduleResponseDto;
     }
