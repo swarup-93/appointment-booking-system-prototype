@@ -3,22 +3,24 @@ package com.swarupdhavan.appointment_booking_system_prototype.controller.admin;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.DoctorSchedule.AdminDoctorScheduleResponseDto;
 import com.swarupdhavan.appointment_booking_system_prototype.service.DoctorScheduleService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
-//GET	    /api/admin/schedules	                        Fetch all doctors' schedules
-//GET	    /api/admin/schedules/{id}	                    Fetch a particular schedule by ID
-//GET	    /api/admin/schedules/doctor/{doctorId}	        Fetch schedules belonging to a particular doctor
-//PATCH	    /api/admin/schedules/{id}/availability	        Enable or disable a schedule
-//DELETE	/api/admin/schedules/{id}	                    Delete a schedule
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+
+//GET	    /api/admin-schedule	                            Fetch all doctors' schedules
+//GET	    /api/admin-schedule/{id}	                    Fetch a particular schedule by ID
+//GET	    /api/admin-schedule/doctor/{doctorId}	        Fetch schedules belonging to a particular doctor
+//PATCH	    /api/admin-schedule/{id}/availability	        Enable or disable a schedule availability
+//DELETE	/api/admin-schedule/{id}	                    deactivate a schedule
 
 // adds bearer support to open api
-@SecurityRequirement(name = "bearer")
+@SecurityRequirement(name = "bearerAuth")
 
 @RestController
 @RequestMapping("api/admin/doctor-schedule")
@@ -34,5 +36,19 @@ public class AdminDoctorScheduleController {
     ResponseEntity<List<AdminDoctorScheduleResponseDto>> getAllSchedule(){
         List<AdminDoctorScheduleResponseDto> allSchedules = doctorScheduleService.getAllSchedule();
         return ResponseEntity.status(HttpStatus.OK).body(allSchedules);
+    }
+
+    // get by id
+    @GetMapping("/{id}")
+    ResponseEntity<AdminDoctorScheduleResponseDto> getScheduleById(UUID id){
+        AdminDoctorScheduleResponseDto scheduleResponseDto = doctorScheduleService.getById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(scheduleResponseDto);
+    }
+
+    // fetches the schedule belongs to particular doctor
+    @GetMapping("/doctor/{id}")
+    ResponseEntity<List<AdminDoctorScheduleResponseDto>> getSchedulesByDoctorId(@PathVariable UUID id){
+        List<AdminDoctorScheduleResponseDto> scheduleResponseDto = doctorScheduleService.getSchedulesByDoctorId(id);
+        return ResponseEntity.status(HttpStatus.OK).body(scheduleResponseDto);
     }
 }
