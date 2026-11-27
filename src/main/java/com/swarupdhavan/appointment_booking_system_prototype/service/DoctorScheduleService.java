@@ -1,5 +1,6 @@
 package com.swarupdhavan.appointment_booking_system_prototype.service;
 
+import com.swarupdhavan.appointment_booking_system_prototype.controller.admin.AdminDoctorScheduleController;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.DoctorSchedule.*;
 import com.swarupdhavan.appointment_booking_system_prototype.entity.Doctor;
 import com.swarupdhavan.appointment_booking_system_prototype.entity.DoctorSchedule;
@@ -10,6 +11,7 @@ import com.swarupdhavan.appointment_booking_system_prototype.repository.DoctorSc
 import jakarta.transaction.Transactional;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import tools.jackson.databind.cfg.MapperBuilder;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -28,8 +30,7 @@ public class DoctorScheduleService {
     public DoctorScheduleService(DoctorService doctorService,
                                  DoctorScheduleRepository doctorScheduleRepository,
                                  DoctorScheduleMapper doctorScheduleMapper,
-                                 AdminDoctorScheduleMapper adminDoctorScheduleMapper
-    ){
+                                 AdminDoctorScheduleMapper adminDoctorScheduleMapper){
         this.doctorService = doctorService;
         this.adminDoctorScheduleMapper = adminDoctorScheduleMapper;
         this.doctorScheduleRepository = doctorScheduleRepository;
@@ -222,6 +223,22 @@ public class DoctorScheduleService {
     public List<AdminDoctorScheduleResponseDto> getAllSchedule(){
         List<DoctorSchedule> doctorSchedules = doctorScheduleRepository.findAll();
         return doctorSchedules.stream()
+                .map(adminDoctorScheduleMapper::mapToDto)
+                .toList();
+    }
+
+    public AdminDoctorScheduleResponseDto getById(UUID id){
+        DoctorSchedule schedule = doctorScheduleRepository.findById(id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("schedule not found")
+                );
+
+        return adminDoctorScheduleMapper.mapToDto(schedule);
+    }
+
+    public List<AdminDoctorScheduleResponseDto> getSchedulesByDoctorId(UUID id) {
+        List<DoctorSchedule> scheduleResponseDto = doctorScheduleRepository.findAllByDoctor_Id(id);
+        return scheduleResponseDto.stream()
                 .map(adminDoctorScheduleMapper::mapToDto)
                 .toList();
     }
