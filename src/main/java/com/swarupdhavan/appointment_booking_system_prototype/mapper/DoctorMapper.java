@@ -27,6 +27,7 @@ public class DoctorMapper {
         response.setLicenceNumber(doctor.getLicenceNumber());
         response.setExperienceYear(doctor.getExperienceYear());
         response.setConsultancyFees(doctor.getConsultancyFees());
+        response.setIsActive(doctor.getIsActive());
         response.setCreatedAt(doctor.getCreatedAt());
         response.setUpdatedAt(doctor.getUpdatedAt());
 
