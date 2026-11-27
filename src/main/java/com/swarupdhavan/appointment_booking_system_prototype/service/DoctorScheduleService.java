@@ -1,12 +1,10 @@
 package com.swarupdhavan.appointment_booking_system_prototype.service;
 
-import com.swarupdhavan.appointment_booking_system_prototype.dto.DoctorSchedule.DoctorScheduleRequestDto;
-import com.swarupdhavan.appointment_booking_system_prototype.dto.DoctorSchedule.DoctorScheduleResponseDto;
-import com.swarupdhavan.appointment_booking_system_prototype.dto.DoctorSchedule.UpdateDoctorScheduleRequest;
-import com.swarupdhavan.appointment_booking_system_prototype.dto.DoctorSchedule.UpdateScheduleAvailabilityDto;
+import com.swarupdhavan.appointment_booking_system_prototype.dto.DoctorSchedule.*;
 import com.swarupdhavan.appointment_booking_system_prototype.entity.Doctor;
 import com.swarupdhavan.appointment_booking_system_prototype.entity.DoctorSchedule;
 import com.swarupdhavan.appointment_booking_system_prototype.exception.ResourceNotFoundException;
+import com.swarupdhavan.appointment_booking_system_prototype.mapper.AdminDoctorScheduleMapper;
 import com.swarupdhavan.appointment_booking_system_prototype.mapper.DoctorScheduleMapper;
 import com.swarupdhavan.appointment_booking_system_prototype.repository.DoctorScheduleRepository;
 import jakarta.transaction.Transactional;
@@ -25,12 +23,15 @@ public class DoctorScheduleService {
     private final DoctorService doctorService;
     private final DoctorScheduleRepository doctorScheduleRepository;
     private final DoctorScheduleMapper doctorScheduleMapper;
+    private final AdminDoctorScheduleMapper adminDoctorScheduleMapper;
 
     public DoctorScheduleService(DoctorService doctorService,
                                  DoctorScheduleRepository doctorScheduleRepository,
-                                 DoctorScheduleMapper doctorScheduleMapper
+                                 DoctorScheduleMapper doctorScheduleMapper,
+                                 AdminDoctorScheduleMapper adminDoctorScheduleMapper
     ){
         this.doctorService = doctorService;
+        this.adminDoctorScheduleMapper = adminDoctorScheduleMapper;
         this.doctorScheduleRepository = doctorScheduleRepository;
         this.doctorScheduleMapper = doctorScheduleMapper;
     }
@@ -213,5 +214,15 @@ public class DoctorScheduleService {
         }
 
         schedule.setIsAvailable(requestDto.getIsAvailable());
+    }
+
+//  ----------------------------------------------------------------------------------------------------------------------
+//   get all schedule (admin)
+
+    public List<AdminDoctorScheduleResponseDto> getAllSchedule(){
+        List<DoctorSchedule> doctorSchedules = doctorScheduleRepository.findAll();
+        return doctorSchedules.stream()
+                .map(adminDoctorScheduleMapper::mapToDto)
+                .toList();
     }
 }
