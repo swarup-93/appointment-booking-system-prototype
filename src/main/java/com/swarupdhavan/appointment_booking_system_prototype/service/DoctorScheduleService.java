@@ -242,4 +242,35 @@ public class DoctorScheduleService {
                 .map(adminDoctorScheduleMapper::mapToDto)
                 .toList();
     }
+
+    // toggles availability
+    @Transactional
+    public AdminDoctorScheduleResponseDto updateAvailabilityById(UUID id) {
+
+        DoctorSchedule schedule = doctorScheduleRepository.findById(id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Schedule not found")
+                );
+
+        boolean currentStatus = schedule.getIsAvailable();
+
+        schedule.setIsAvailable(!currentStatus);
+
+        DoctorSchedule updatedSchedule = doctorScheduleRepository.save(schedule);
+
+        return adminDoctorScheduleMapper.mapToDto(updatedSchedule);
+    }
+
+    //    deactivates the schedule
+    @Transactional
+    public AdminDoctorScheduleResponseDto AdminDeactivateScheduleById(UUID id) {
+        DoctorSchedule schedule = doctorScheduleRepository.findById(id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Schedule not found")
+                );
+
+        schedule.setIsActive(false);
+
+        return adminDoctorScheduleMapper.mapToDto(schedule);
+    }
 }

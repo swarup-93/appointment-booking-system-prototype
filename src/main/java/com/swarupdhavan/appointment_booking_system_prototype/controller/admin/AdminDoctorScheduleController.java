@@ -3,7 +3,6 @@ package com.swarupdhavan.appointment_booking_system_prototype.controller.admin;
 import com.swarupdhavan.appointment_booking_system_prototype.dto.DoctorSchedule.AdminDoctorScheduleResponseDto;
 import com.swarupdhavan.appointment_booking_system_prototype.service.DoctorScheduleService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -50,5 +49,18 @@ public class AdminDoctorScheduleController {
     ResponseEntity<List<AdminDoctorScheduleResponseDto>> getSchedulesByDoctorId(@PathVariable UUID id){
         List<AdminDoctorScheduleResponseDto> scheduleResponseDto = doctorScheduleService.getSchedulesByDoctorId(id);
         return ResponseEntity.status(HttpStatus.OK).body(scheduleResponseDto);
+    }
+
+    // enable or disable availability
+    @PostMapping("/{id}/updateAvail-ability")
+    ResponseEntity<AdminDoctorScheduleResponseDto> updateAvailabilityById(@PathVariable UUID id){
+        AdminDoctorScheduleResponseDto updatedResponse = doctorScheduleService.updateAvailabilityById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(updatedResponse);
+    }
+
+    @DeleteMapping("/{id}")
+    ResponseEntity<AdminDoctorScheduleResponseDto> deactivateScheduleById(@PathVariable UUID id){
+        AdminDoctorScheduleResponseDto deactivatedResponse = doctorScheduleService.AdminDeactivateScheduleById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(deactivatedResponse);
     }
 }
